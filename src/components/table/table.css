@@ -1,0 +1,227 @@
+/**
+ * Banda Data Table Component Styles
+ */
+
+/* ========================================
+   TABLE CONTAINER
+   ======================================== */
+
+.banda-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+}
+
+.banda-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--banda-text-sm);
+}
+
+/* ========================================
+   TABLE HEADER
+   ======================================== */
+
+.banda-table__head {
+    background-color: var(--banda-color-neutral-50);
+}
+
+.banda-table__header-row {
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+.banda-table__th {
+    padding: var(--banda-space-3) var(--banda-space-4);
+    text-align: left;
+    font-weight: var(--banda-weight-semibold);
+    color: var(--banda-color-text-primary);
+    white-space: nowrap;
+}
+
+.banda-table__th--sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: var(--banda-transition-colors);
+}
+
+.banda-table__th--sortable:hover {
+    background-color: var(--banda-color-neutral-100);
+}
+
+.banda-table__th-content {
+    display: flex;
+    align-items: center;
+    gap: var(--banda-space-2);
+}
+
+.banda-table__sort-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--banda-color-text-tertiary);
+    transition: var(--banda-transition-colors);
+}
+
+.banda-table__th--sorted .banda-table__sort-icon {
+    color: var(--banda-color-primary);
+}
+
+/* ========================================
+   TABLE BODY
+   ======================================== */
+
+.banda-table__body {
+    background-color: var(--banda-color-surface);
+}
+
+.banda-table__row {
+    border-bottom: 1px solid var(--banda-color-border);
+    transition: var(--banda-transition-colors);
+}
+
+.banda-table__row:last-child {
+    border-bottom: none;
+}
+
+.banda-table__row:hover {
+    background-color: var(--banda-color-neutral-50);
+}
+
+.banda-table__row--selected {
+    background-color: var(--banda-color-primary-50);
+}
+
+.banda-table__row--selected:hover {
+    background-color: var(--banda-color-primary-100);
+}
+
+.banda-table__td {
+    padding: var(--banda-space-3) var(--banda-space-4);
+    color: var(--banda-color-text-primary);
+}
+
+/* ========================================
+   TABLE VARIANTS
+   ======================================== */
+
+/* Striped */
+.banda-table--striped .banda-table__body .banda-table__row:nth-child(even) {
+    background-color: var(--banda-color-neutral-50);
+}
+
+.banda-table--striped .banda-table__body .banda-table__row:nth-child(even):hover {
+    background-color: var(--banda-color-neutral-100);
+}
+
+/* Compact */
+.banda-table--compact .banda-table__th,
+.banda-table--compact .banda-table__td {
+    padding: var(--banda-space-2) var(--banda-space-3);
+}
+
+/* Borderless */
+.banda-table--borderless .banda-table__row {
+    border-bottom: none;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+
+.banda-table__empty {
+    padding: var(--banda-space-12);
+    text-align: center;
+    color: var(--banda-color-text-tertiary);
+}
+
+.banda-table__empty-icon {
+    font-size: 3rem;
+    margin-bottom: var(--banda-space-4);
+    opacity: 0.5;
+}
+
+.banda-table__empty-text {
+    font-size: var(--banda-text-sm);
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+
+.banda-table__loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--banda-space-12);
+    gap: var(--banda-space-3);
+    color: var(--banda-color-text-secondary);
+}
+
+/* ========================================
+   PAGINATION
+   ======================================== */
+
+.banda-table__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--banda-space-3) var(--banda-space-4);
+    border-top: 1px solid var(--banda-color-border);
+    background-color: var(--banda-color-neutral-50);
+    font-size: var(--banda-text-sm);
+}
+
+.banda-table__page-info {
+    color: var(--banda-color-text-secondary);
+}
+
+.banda-table__page-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--banda-space-2);
+}
+
+.banda-table__page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--banda-color-border);
+    background: var(--banda-color-surface);
+    border-radius: var(--banda-radius-md);
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+}
+
+.banda-table__page-btn:hover {
+    background-color: var(--banda-color-neutral-100);
+    border-color: var(--banda-color-border-hover);
+}
+
+.banda-table__page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.banda-table__page-btn--active {
+    background-color: var(--banda-color-primary);
+    border-color: var(--banda-color-primary);
+    color: white;
+}
+
+/* ========================================
+   CHECKBOX COLUMN
+   ======================================== */
+
+.banda-table__checkbox {
+    width: 40px;
+    text-align: center;
+}
+
+.banda-table__checkbox input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

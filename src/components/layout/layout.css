@@ -1,0 +1,488 @@
+/**
+ * Banda Layout Components Styles
+ */
+
+/* ========================================
+   STACK (Vertical Layout)
+   ======================================== */
+
+.banda-stack {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stack spacing variants */
+.banda-stack--space-0 {
+    gap: 0;
+}
+
+.banda-stack--space-1 {
+    gap: var(--banda-space-1);
+}
+
+.banda-stack--space-2 {
+    gap: var(--banda-space-2);
+}
+
+.banda-stack--space-3 {
+    gap: var(--banda-space-3);
+}
+
+.banda-stack--space-4 {
+    gap: var(--banda-space-4);
+}
+
+.banda-stack--space-5 {
+    gap: var(--banda-space-5);
+}
+
+.banda-stack--space-6 {
+    gap: var(--banda-space-6);
+}
+
+.banda-stack--space-8 {
+    gap: var(--banda-space-8);
+}
+
+.banda-stack--space-10 {
+    gap: var(--banda-space-10);
+}
+
+.banda-stack--space-12 {
+    gap: var(--banda-space-12);
+}
+
+/* Stack alignment */
+.banda-stack--align-start {
+    align-items: flex-start;
+}
+
+.banda-stack--align-center {
+    align-items: center;
+}
+
+.banda-stack--align-end {
+    align-items: flex-end;
+}
+
+.banda-stack--align-stretch {
+    align-items: stretch;
+}
+
+/* Stack justify */
+.banda-stack--justify-start {
+    justify-content: flex-start;
+}
+
+.banda-stack--justify-center {
+    justify-content: center;
+}
+
+.banda-stack--justify-end {
+    justify-content: flex-end;
+}
+
+.banda-stack--justify-between {
+    justify-content: space-between;
+}
+
+.banda-stack--justify-around {
+    justify-content: space-around;
+}
+
+/* ========================================
+   INLINE (Horizontal Layout)
+   ======================================== */
+
+.banda-inline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.banda-inline--nowrap {
+    flex-wrap: nowrap;
+}
+
+/* Inline spacing */
+.banda-inline--space-0 {
+    gap: 0;
+}
+
+.banda-inline--space-1 {
+    gap: var(--banda-space-1);
+}
+
+.banda-inline--space-2 {
+    gap: var(--banda-space-2);
+}
+
+.banda-inline--space-3 {
+    gap: var(--banda-space-3);
+}
+
+.banda-inline--space-4 {
+    gap: var(--banda-space-4);
+}
+
+.banda-inline--space-5 {
+    gap: var(--banda-space-5);
+}
+
+.banda-inline--space-6 {
+    gap: var(--banda-space-6);
+}
+
+.banda-inline--space-8 {
+    gap: var(--banda-space-8);
+}
+
+/* Inline alignment */
+.banda-inline--align-start {
+    align-items: flex-start;
+}
+
+.banda-inline--align-center {
+    align-items: center;
+}
+
+.banda-inline--align-end {
+    align-items: flex-end;
+}
+
+.banda-inline--align-baseline {
+    align-items: baseline;
+}
+
+.banda-inline--align-stretch {
+    align-items: stretch;
+}
+
+/* Inline justify */
+.banda-inline--justify-start {
+    justify-content: flex-start;
+}
+
+.banda-inline--justify-center {
+    justify-content: center;
+}
+
+.banda-inline--justify-end {
+    justify-content: flex-end;
+}
+
+.banda-inline--justify-between {
+    justify-content: space-between;
+}
+
+.banda-inline--justify-around {
+    justify-content: space-around;
+}
+
+.banda-inline--justify-evenly {
+    justify-content: space-evenly;
+}
+
+/* ========================================
+   GRID
+   ======================================== */
+
+.banda-grid {
+    display: grid;
+}
+
+/* Grid column templates */
+.banda-grid--cols-1 {
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.banda-grid--cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.banda-grid--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.banda-grid--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.banda-grid--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.banda-grid--cols-6 {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.banda-grid--cols-12 {
+    grid-template-columns: repeat(12, 1fr);
+}
+
+/* Auto-fit/fill grids */
+.banda-grid--auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(var(--banda-grid-min, 200px), 1fr));
+}
+
+.banda-grid--auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(var(--banda-grid-min, 200px), 1fr));
+}
+
+/* Grid spacing */
+.banda-grid--gap-0 {
+    gap: 0;
+}
+
+.banda-grid--gap-1 {
+    gap: var(--banda-space-1);
+}
+
+.banda-grid--gap-2 {
+    gap: var(--banda-space-2);
+}
+
+.banda-grid--gap-3 {
+    gap: var(--banda-space-3);
+}
+
+.banda-grid--gap-4 {
+    gap: var(--banda-space-4);
+}
+
+.banda-grid--gap-5 {
+    gap: var(--banda-space-5);
+}
+
+.banda-grid--gap-6 {
+    gap: var(--banda-space-6);
+}
+
+.banda-grid--gap-8 {
+    gap: var(--banda-space-8);
+}
+
+/* Grid alignment */
+.banda-grid--align-start {
+    align-items: start;
+}
+
+.banda-grid--align-center {
+    align-items: center;
+}
+
+.banda-grid--align-end {
+    align-items: end;
+}
+
+.banda-grid--align-stretch {
+    align-items: stretch;
+}
+
+/* Grid justify */
+.banda-grid--justify-start {
+    justify-items: start;
+}
+
+.banda-grid--justify-center {
+    justify-items: center;
+}
+
+.banda-grid--justify-end {
+    justify-items: end;
+}
+
+.banda-grid--justify-stretch {
+    justify-items: stretch;
+}
+
+/* ========================================
+   DIVIDER
+   ======================================== */
+
+.banda-divider {
+    border: none;
+    background-color: var(--banda-color-border);
+    flex-shrink: 0;
+}
+
+/* Horizontal divider (default) */
+.banda-divider--horizontal {
+    width: 100%;
+    height: 1px;
+}
+
+/* Vertical divider */
+.banda-divider--vertical {
+    width: 1px;
+    height: 100%;
+    min-height: 1rem;
+    align-self: stretch;
+}
+
+/* Divider spacing */
+.banda-divider--space-1 {
+    margin: var(--banda-space-1) 0;
+}
+
+.banda-divider--space-2 {
+    margin: var(--banda-space-2) 0;
+}
+
+.banda-divider--space-4 {
+    margin: var(--banda-space-4) 0;
+}
+
+.banda-divider--space-6 {
+    margin: var(--banda-space-6) 0;
+}
+
+.banda-divider--space-8 {
+    margin: var(--banda-space-8) 0;
+}
+
+.banda-divider--vertical.banda-divider--space-1 {
+    margin: 0 var(--banda-space-1);
+}
+
+.banda-divider--vertical.banda-divider--space-2 {
+    margin: 0 var(--banda-space-2);
+}
+
+.banda-divider--vertical.banda-divider--space-4 {
+    margin: 0 var(--banda-space-4);
+}
+
+.banda-divider--vertical.banda-divider--space-6 {
+    margin: 0 var(--banda-space-6);
+}
+
+.banda-divider--vertical.banda-divider--space-8 {
+    margin: 0 var(--banda-space-8);
+}
+
+/* Divider variants */
+.banda-divider--dashed {
+    background: none;
+    border-top: 1px dashed var(--banda-color-border);
+}
+
+.banda-divider--vertical.banda-divider--dashed {
+    border-top: none;
+    border-left: 1px dashed var(--banda-color-border);
+}
+
+.banda-divider--dotted {
+    background: none;
+    border-top: 1px dotted var(--banda-color-border);
+}
+
+.banda-divider--vertical.banda-divider--dotted {
+    border-top: none;
+    border-left: 1px dotted var(--banda-color-border);
+}
+
+/* Divider colors */
+.banda-divider--light {
+    background-color: var(--banda-color-neutral-200);
+}
+
+.banda-divider--dark {
+    background-color: var(--banda-color-neutral-400);
+}
+
+/* ========================================
+   SPACER
+   ======================================== */
+
+.banda-spacer {
+    flex: 1;
+}
+
+/* Fixed spacers */
+.banda-spacer--1 {
+    flex: none;
+    width: var(--banda-space-1);
+    height: var(--banda-space-1);
+}
+
+.banda-spacer--2 {
+    flex: none;
+    width: var(--banda-space-2);
+    height: var(--banda-space-2);
+}
+
+.banda-spacer--4 {
+    flex: none;
+    width: var(--banda-space-4);
+    height: var(--banda-space-4);
+}
+
+.banda-spacer--6 {
+    flex: none;
+    width: var(--banda-space-6);
+    height: var(--banda-space-6);
+}
+
+.banda-spacer--8 {
+    flex: none;
+    width: var(--banda-space-8);
+    height: var(--banda-space-8);
+}
+
+/* ========================================
+   CENTER
+   ======================================== */
+
+.banda-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banda-center--full {
+    width: 100%;
+    height: 100%;
+}
+
+/* ========================================
+   CONTAINER
+   ======================================== */
+
+.banda-layout-container {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: var(--banda-space-4);
+}
+
+.banda-layout-container--sm {
+    max-width: 640px;
+}
+
+.banda-layout-container--md {
+    max-width: 768px;
+}
+
+.banda-layout-container--lg {
+    max-width: 1024px;
+}
+
+.banda-layout-container--xl {
+    max-width: 1280px;
+}
+
+.banda-layout-container--2xl {
+    max-width: 1536px;
+}
+
+@media (min-width: 640px) {
+    .banda-layout-container {
+        padding-inline: var(--banda-space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .banda-layout-container {
+        padding-inline: var(--banda-space-8);
+    }
+}

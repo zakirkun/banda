@@ -1,0 +1,173 @@
+/**
+ * Banda Card Component Styles
+ */
+
+/* ========================================
+   BASE CARD
+   ======================================== */
+
+.banda-card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--banda-color-surface);
+    border-radius: var(--banda-radius-lg);
+    overflow: hidden;
+    transition: var(--banda-transition-shadow);
+}
+
+/* ========================================
+   CARD VARIANTS
+   ======================================== */
+
+/* Default - subtle shadow */
+.banda-card--default {
+    box-shadow: var(--banda-shadow-sm);
+    border: 1px solid var(--banda-color-border);
+}
+
+/* Elevated - prominent shadow */
+.banda-card--elevated {
+    box-shadow: var(--banda-shadow-lg);
+}
+
+.banda-card--elevated:hover {
+    box-shadow: var(--banda-shadow-xl);
+}
+
+/* Outlined - border only */
+.banda-card--outlined {
+    border: 1px solid var(--banda-color-border);
+}
+
+/* Ghost - no border or shadow */
+.banda-card--ghost {
+    background-color: transparent;
+}
+
+/* Interactive - clickable card */
+.banda-card--interactive {
+    cursor: pointer;
+}
+
+.banda-card--interactive:hover {
+    box-shadow: var(--banda-shadow-md);
+}
+
+.banda-card--interactive:focus-visible {
+    outline: none;
+    box-shadow: var(--banda-shadow-focus);
+}
+
+/* ========================================
+   CARD SECTIONS
+   ======================================== */
+
+/* Card Header */
+.banda-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--banda-space-4);
+    padding: var(--banda-space-4) var(--banda-space-5);
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+.banda-card__header:last-child {
+    border-bottom: none;
+}
+
+.banda-card__header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.banda-card__title {
+    font-size: var(--banda-text-lg);
+    font-weight: var(--banda-weight-semibold);
+    color: var(--banda-color-text-primary);
+    margin: 0;
+}
+
+.banda-card__subtitle {
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-tertiary);
+    margin: var(--banda-space-1) 0 0 0;
+}
+
+.banda-card__header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--banda-space-2);
+}
+
+/* Card Body */
+.banda-card__body {
+    flex: 1;
+    padding: var(--banda-space-5);
+}
+
+.banda-card__body:first-child {
+    padding-top: var(--banda-space-5);
+}
+
+.banda-card__body:last-child {
+    padding-bottom: var(--banda-space-5);
+}
+
+/* Card Footer */
+.banda-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--banda-space-3);
+    padding: var(--banda-space-4) var(--banda-space-5);
+    border-top: 1px solid var(--banda-color-border);
+    background-color: var(--banda-color-neutral-50);
+}
+
+.banda-card__footer:first-child {
+    border-top: none;
+}
+
+.banda-card__footer--left {
+    justify-content: flex-start;
+}
+
+.banda-card__footer--center {
+    justify-content: center;
+}
+
+.banda-card__footer--between {
+    justify-content: space-between;
+}
+
+/* Card Media/Image */
+.banda-card__media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.banda-card__media--square {
+    aspect-ratio: 1;
+}
+
+.banda-card__media--wide {
+    aspect-ratio: 21 / 9;
+}
+
+/* ========================================
+   CARD PADDING VARIANTS
+   ======================================== */
+
+.banda-card--compact .banda-card__header,
+.banda-card--compact .banda-card__body,
+.banda-card--compact .banda-card__footer {
+    padding: var(--banda-space-3) var(--banda-space-4);
+}
+
+.banda-card--spacious .banda-card__header,
+.banda-card--spacious .banda-card__body,
+.banda-card--spacious .banda-card__footer {
+    padding: var(--banda-space-6) var(--banda-space-8);
+}

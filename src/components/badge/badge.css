@@ -1,0 +1,231 @@
+/**
+ * Banda Badge Component Styles
+ */
+
+/* ========================================
+   BASE BADGE
+   ======================================== */
+
+.banda-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--banda-space-1);
+    padding: var(--banda-space-1) var(--banda-space-2);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-xs);
+    font-weight: var(--banda-weight-medium);
+    line-height: 1;
+    white-space: nowrap;
+    border-radius: var(--banda-radius-full);
+    transition: var(--banda-transition-colors);
+}
+
+/* ========================================
+   BADGE VARIANTS
+   ======================================== */
+
+/* Default (neutral) */
+.banda-badge--default {
+    background-color: var(--banda-color-neutral-100);
+    color: var(--banda-color-neutral-700);
+}
+
+/* Primary */
+.banda-badge--primary {
+    background-color: var(--banda-color-primary-100);
+    color: var(--banda-color-primary-700);
+}
+
+/* Secondary */
+.banda-badge--secondary {
+    background-color: var(--banda-color-secondary-100);
+    color: var(--banda-color-secondary-700);
+}
+
+/* Success */
+.banda-badge--success {
+    background-color: var(--banda-color-success-100);
+    color: var(--banda-color-success-700);
+}
+
+/* Warning */
+.banda-badge--warning {
+    background-color: var(--banda-color-warning-100);
+    color: var(--banda-color-warning-700);
+}
+
+/* Danger */
+.banda-badge--danger {
+    background-color: var(--banda-color-danger-100);
+    color: var(--banda-color-danger-700);
+}
+
+/* ========================================
+   SOLID VARIANTS
+   ======================================== */
+
+.banda-badge--solid.banda-badge--default {
+    background-color: var(--banda-color-neutral-600);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-badge--solid.banda-badge--primary {
+    background-color: var(--banda-color-primary);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-badge--solid.banda-badge--secondary {
+    background-color: var(--banda-color-secondary);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-badge--solid.banda-badge--success {
+    background-color: var(--banda-color-success);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-badge--solid.banda-badge--warning {
+    background-color: var(--banda-color-warning);
+    color: var(--banda-color-neutral-900);
+}
+
+.banda-badge--solid.banda-badge--danger {
+    background-color: var(--banda-color-danger);
+    color: var(--banda-color-text-inverse);
+}
+
+/* ========================================
+   OUTLINE VARIANTS
+   ======================================== */
+
+.banda-badge--outline {
+    background-color: transparent;
+    border: 1px solid currentColor;
+}
+
+.banda-badge--outline.banda-badge--default {
+    color: var(--banda-color-neutral-600);
+}
+
+.banda-badge--outline.banda-badge--primary {
+    color: var(--banda-color-primary);
+}
+
+.banda-badge--outline.banda-badge--success {
+    color: var(--banda-color-success);
+}
+
+.banda-badge--outline.banda-badge--warning {
+    color: var(--banda-color-warning-600);
+}
+
+.banda-badge--outline.banda-badge--danger {
+    color: var(--banda-color-danger);
+}
+
+/* ========================================
+   BADGE SIZES
+   ======================================== */
+
+.banda-badge--sm {
+    padding: 0.125rem var(--banda-space-1);
+    font-size: 0.625rem;
+}
+
+.banda-badge--lg {
+    padding: var(--banda-space-1) var(--banda-space-3);
+    font-size: var(--banda-text-sm);
+}
+
+/* ========================================
+   DOT INDICATOR
+   ======================================== */
+
+.banda-badge__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--banda-radius-full);
+    background-color: currentColor;
+    flex-shrink: 0;
+}
+
+.banda-badge--sm .banda-badge__dot {
+    width: 4px;
+    height: 4px;
+}
+
+.banda-badge--lg .banda-badge__dot {
+    width: 8px;
+    height: 8px;
+}
+
+/* Pulsing dot */
+.banda-badge__dot--pulse {
+    position: relative;
+}
+
+.banda-badge__dot--pulse::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: inherit;
+    animation: banda-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ========================================
+   BADGE WITH CLOSE BUTTON
+   ======================================== */
+
+.banda-badge--dismissible {
+    padding-right: var(--banda-space-1);
+}
+
+.banda-badge__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    margin-left: var(--banda-space-1);
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: currentColor;
+    opacity: 0.6;
+    cursor: pointer;
+    border-radius: var(--banda-radius-full);
+    transition: var(--banda-transition-opacity);
+}
+
+.banda-badge__close:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.banda-badge__close::before,
+.banda-badge__close::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 1.5px;
+    background-color: currentColor;
+}
+
+.banda-badge__close::before {
+    transform: rotate(45deg);
+}
+
+.banda-badge__close::after {
+    transform: rotate(-45deg);
+}
+
+/* ========================================
+   BADGE GROUP
+   ======================================== */
+
+.banda-badge-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--banda-space-2);
+}

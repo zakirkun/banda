@@ -1,0 +1,300 @@
+/**
+ * Banda Animations
+ * 
+ * Reusable keyframe animations and utility classes.
+ */
+
+/* ========================================
+   KEYFRAME DEFINITIONS
+   ======================================== */
+
+/* Fade animations */
+@keyframes banda-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes banda-fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* Scale animations */
+@keyframes banda-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes banda-scale-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* Slide animations */
+@keyframes banda-slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes banda-slide-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes banda-slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes banda-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Pulse animation */
+@keyframes banda-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Spin animation */
+@keyframes banda-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Bounce animation */
+@keyframes banda-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+
+    50% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+}
+
+/* Shake animation */
+@keyframes banda-shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-4px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+/* Ping animation (for notifications) */
+@keyframes banda-ping {
+
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Modal/Dialog entrance */
+@keyframes banda-modal-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes banda-modal-out {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(-20px);
+    }
+}
+
+/* Backdrop animations */
+@keyframes banda-backdrop-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes banda-backdrop-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+/* ========================================
+   ANIMATION UTILITY CLASSES
+   ======================================== */
+
+.banda-animate-fade-in {
+    animation: banda-fade-in var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-fade-out {
+    animation: banda-fade-out var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-scale-in {
+    animation: banda-scale-in var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-scale-out {
+    animation: banda-scale-out var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-slide-in-up {
+    animation: banda-slide-in-up var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-slide-in-down {
+    animation: banda-slide-in-down var(--banda-transition-normal) forwards;
+}
+
+.banda-animate-pulse {
+    animation: banda-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.banda-animate-spin {
+    animation: banda-spin 1s linear infinite;
+}
+
+.banda-animate-bounce {
+    animation: banda-bounce 1s infinite;
+}
+
+.banda-animate-shake {
+    animation: banda-shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.banda-animate-ping {
+    animation: banda-ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* ========================================
+   TRANSITION UTILITIES
+   ======================================== */
+
+.banda-transition-all {
+    transition: var(--banda-transition-all);
+}
+
+.banda-transition-colors {
+    transition: var(--banda-transition-colors);
+}
+
+.banda-transition-opacity {
+    transition: var(--banda-transition-opacity);
+}
+
+.banda-transition-transform {
+    transition: var(--banda-transition-transform);
+}
+
+.banda-transition-shadow {
+    transition: var(--banda-transition-shadow);
+}
+
+/* Disable transitions */
+.banda-transition-none {
+    transition: none !important;
+}

@@ -1,0 +1,241 @@
+/**
+ * Banda Date Picker Component Styles
+ */
+
+/* ========================================
+   DATE PICKER CONTAINER
+   ======================================== */
+
+.banda-datepicker {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.banda-datepicker__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--banda-space-2);
+    width: 100%;
+    padding: var(--banda-space-2) var(--banda-space-3);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-primary);
+    background-color: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-md);
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+    text-align: left;
+}
+
+.banda-datepicker__trigger:hover {
+    border-color: var(--banda-color-border-hover);
+}
+
+.banda-datepicker__trigger:focus {
+    outline: none;
+    border-color: var(--banda-color-primary);
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-datepicker__trigger--open {
+    border-color: var(--banda-color-primary);
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-datepicker__trigger-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--banda-color-text-tertiary);
+}
+
+.banda-datepicker__trigger-value {
+    flex: 1;
+}
+
+.banda-datepicker__placeholder {
+    color: var(--banda-color-text-disabled);
+}
+
+/* ========================================
+   CALENDAR DROPDOWN
+   ======================================== */
+
+.banda-datepicker__dropdown {
+    position: absolute;
+    z-index: var(--banda-z-dropdown);
+    top: calc(100% + var(--banda-space-1));
+    left: 0;
+    width: 320px;
+    background-color: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    box-shadow: var(--banda-shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition:
+        opacity var(--banda-transition-fast),
+        transform var(--banda-transition-fast),
+        visibility var(--banda-transition-fast);
+}
+
+.banda-datepicker__dropdown--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ========================================
+   CALENDAR HEADER
+   ======================================== */
+
+.banda-datepicker__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--banda-space-3);
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+.banda-datepicker__nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--banda-color-text-secondary);
+    border-radius: var(--banda-radius-md);
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+}
+
+.banda-datepicker__nav:hover {
+    background-color: var(--banda-color-neutral-100);
+    color: var(--banda-color-text-primary);
+}
+
+.banda-datepicker__month-year {
+    font-weight: var(--banda-weight-semibold);
+    font-size: var(--banda-text-sm);
+}
+
+/* ========================================
+   CALENDAR GRID
+   ======================================== */
+
+.banda-datepicker__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: var(--banda-space-2) var(--banda-space-3);
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+.banda-datepicker__weekday {
+    text-align: center;
+    font-size: var(--banda-text-xs);
+    font-weight: var(--banda-weight-medium);
+    color: var(--banda-color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.banda-datepicker__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: var(--banda-space-2) var(--banda-space-3);
+    gap: var(--banda-space-1);
+}
+
+.banda-datepicker__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-primary);
+    border-radius: var(--banda-radius-md);
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+}
+
+.banda-datepicker__day:hover {
+    background-color: var(--banda-color-neutral-100);
+}
+
+.banda-datepicker__day--today {
+    font-weight: var(--banda-weight-semibold);
+    color: var(--banda-color-primary);
+}
+
+.banda-datepicker__day--selected {
+    background-color: var(--banda-color-primary);
+    color: white;
+}
+
+.banda-datepicker__day--selected:hover {
+    background-color: var(--banda-color-primary-600);
+}
+
+.banda-datepicker__day--outside {
+    color: var(--banda-color-text-disabled);
+}
+
+.banda-datepicker__day--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.banda-datepicker__day--disabled:hover {
+    background: transparent;
+}
+
+/* ========================================
+   CALENDAR FOOTER
+   ======================================== */
+
+.banda-datepicker__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--banda-space-3);
+    border-top: 1px solid var(--banda-color-border);
+}
+
+.banda-datepicker__today-btn {
+    padding: var(--banda-space-1) var(--banda-space-2);
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--banda-radius-sm);
+    transition: var(--banda-transition-colors);
+}
+
+.banda-datepicker__today-btn:hover {
+    background-color: var(--banda-color-primary-50);
+}
+
+.banda-datepicker__clear-btn {
+    padding: var(--banda-space-1) var(--banda-space-2);
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--banda-radius-sm);
+    transition: var(--banda-transition-colors);
+}
+
+.banda-datepicker__clear-btn:hover {
+    color: var(--banda-color-text-primary);
+    background-color: var(--banda-color-neutral-100);
+}

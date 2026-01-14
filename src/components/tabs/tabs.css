@@ -1,0 +1,156 @@
+/**
+ * Banda Tabs Component Styles
+ */
+
+/* ========================================
+   TABS CONTAINER
+   ======================================== */
+
+.banda-tabs {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   TAB LIST
+   ======================================== */
+
+.banda-tabs__list {
+    display: flex;
+    border-bottom: 1px solid var(--banda-color-border);
+    gap: var(--banda-space-1);
+}
+
+.banda-tabs__list--stretch .banda-tabs__tab {
+    flex: 1;
+}
+
+/* ========================================
+   TAB BUTTON
+   ======================================== */
+
+.banda-tabs__tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--banda-space-2);
+    padding: var(--banda-space-3) var(--banda-space-4);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-sm);
+    font-weight: var(--banda-weight-medium);
+    color: var(--banda-color-text-secondary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+    white-space: nowrap;
+}
+
+.banda-tabs__tab:hover {
+    color: var(--banda-color-text-primary);
+    background-color: var(--banda-color-neutral-50);
+}
+
+.banda-tabs__tab:focus-visible {
+    outline: none;
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-tabs__tab--active {
+    color: var(--banda-color-primary);
+}
+
+.banda-tabs__tab--active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--banda-color-primary);
+}
+
+.banda-tabs__tab:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Tab with icon */
+.banda-tabs__tab-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ========================================
+   TAB PANEL
+   ======================================== */
+
+.banda-tabs__panel {
+    display: none;
+    padding: var(--banda-space-4) 0;
+    animation: banda-fade-in var(--banda-transition-fast) forwards;
+}
+
+.banda-tabs__panel--active {
+    display: block;
+}
+
+/* ========================================
+   TAB VARIANTS
+   ======================================== */
+
+/* Pills variant */
+.banda-tabs--pills .banda-tabs__list {
+    border-bottom: none;
+    background-color: var(--banda-color-neutral-100);
+    border-radius: var(--banda-radius-lg);
+    padding: var(--banda-space-1);
+    gap: var(--banda-space-1);
+}
+
+.banda-tabs--pills .banda-tabs__tab {
+    border-radius: var(--banda-radius-md);
+    padding: var(--banda-space-2) var(--banda-space-4);
+}
+
+.banda-tabs--pills .banda-tabs__tab::after {
+    display: none;
+}
+
+.banda-tabs--pills .banda-tabs__tab--active {
+    background-color: var(--banda-color-surface);
+    color: var(--banda-color-text-primary);
+    box-shadow: var(--banda-shadow-sm);
+}
+
+/* Bordered variant */
+.banda-tabs--bordered .banda-tabs__tab {
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: var(--banda-radius-md) var(--banda-radius-md) 0 0;
+    margin-bottom: -1px;
+}
+
+.banda-tabs--bordered .banda-tabs__tab--active {
+    background-color: var(--banda-color-surface);
+    border-color: var(--banda-color-border);
+}
+
+.banda-tabs--bordered .banda-tabs__tab--active::after {
+    display: none;
+}
+
+/* ========================================
+   TAB SIZES
+   ======================================== */
+
+.banda-tabs--sm .banda-tabs__tab {
+    padding: var(--banda-space-2) var(--banda-space-3);
+    font-size: var(--banda-text-xs);
+}
+
+.banda-tabs--lg .banda-tabs__tab {
+    padding: var(--banda-space-4) var(--banda-space-6);
+    font-size: var(--banda-text-base);
+}

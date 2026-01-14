@@ -1,0 +1,182 @@
+/**
+ * Banda Base Styles
+ * 
+ * Core imports and global styling.
+ * This is the main entry point for all CSS.
+ */
+
+/* Import order matters! */
+@import './reset.css';
+@import './tokens.css';
+@import './typography.css';
+@import './animations.css';
+
+/* ========================================
+   GLOBAL DEFAULTS
+   ======================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--banda-color-background);
+}
+
+/* Focus visible styles */
+:focus-visible {
+    outline: 2px solid var(--banda-color-primary);
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Visually hidden (for accessibility) */
+.banda-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Container */
+.banda-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: var(--banda-space-4);
+}
+
+@media (min-width: 640px) {
+    .banda-container {
+        padding-inline: var(--banda-space-6);
+    }
+}
+
+@media (min-width: 1024px) {
+    .banda-container {
+        padding-inline: var(--banda-space-8);
+    }
+}
+
+/* Flex utilities */
+.banda-flex {
+    display: flex;
+}
+
+.banda-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.banda-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banda-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Grid utilities */
+.banda-grid {
+    display: grid;
+}
+
+.banda-grid-cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.banda-grid-cols-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.banda-grid-cols-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Gap utilities */
+.banda-gap-1 {
+    gap: var(--banda-space-1);
+}
+
+.banda-gap-2 {
+    gap: var(--banda-space-2);
+}
+
+.banda-gap-3 {
+    gap: var(--banda-space-3);
+}
+
+.banda-gap-4 {
+    gap: var(--banda-space-4);
+}
+
+.banda-gap-6 {
+    gap: var(--banda-space-6);
+}
+
+.banda-gap-8 {
+    gap: var(--banda-space-8);
+}
+
+/* Text alignment */
+.banda-text-left {
+    text-align: left;
+}
+
+.banda-text-center {
+    text-align: center;
+}
+
+.banda-text-right {
+    text-align: right;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+/* For Webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--banda-color-neutral-100);
+    border-radius: var(--banda-radius-full);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--banda-color-neutral-400);
+    border-radius: var(--banda-radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--banda-color-neutral-500);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--banda-color-neutral-400) var(--banda-color-neutral-100);
+}

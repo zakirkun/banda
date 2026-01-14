@@ -1,0 +1,243 @@
+/**
+ * Banda Design Tokens
+ * 
+ * Central design system variables using CSS custom properties.
+ * All tokens use the --banda-* prefix for namespacing.
+ */
+
+:root {
+    /* ========================================
+     COLOR PALETTE
+     ======================================== */
+
+    /* Primary - Deep indigo with vibrant tones */
+    --banda-color-primary-50: hsl(243, 75%, 97%);
+    --banda-color-primary-100: hsl(243, 75%, 94%);
+    --banda-color-primary-200: hsl(243, 75%, 88%);
+    --banda-color-primary-300: hsl(243, 75%, 76%);
+    --banda-color-primary-400: hsl(243, 75%, 64%);
+    --banda-color-primary-500: hsl(243, 75%, 52%);
+    --banda-color-primary-600: hsl(243, 75%, 45%);
+    --banda-color-primary-700: hsl(243, 75%, 38%);
+    --banda-color-primary-800: hsl(243, 75%, 31%);
+    --banda-color-primary-900: hsl(243, 75%, 24%);
+    --banda-color-primary: var(--banda-color-primary-500);
+
+    /* Secondary - Warm coral tones */
+    --banda-color-secondary-50: hsl(12, 80%, 97%);
+    --banda-color-secondary-100: hsl(12, 80%, 94%);
+    --banda-color-secondary-200: hsl(12, 80%, 88%);
+    --banda-color-secondary-300: hsl(12, 80%, 76%);
+    --banda-color-secondary-400: hsl(12, 80%, 64%);
+    --banda-color-secondary-500: hsl(12, 80%, 55%);
+    --banda-color-secondary-600: hsl(12, 80%, 48%);
+    --banda-color-secondary-700: hsl(12, 80%, 40%);
+    --banda-color-secondary-800: hsl(12, 80%, 32%);
+    --banda-color-secondary-900: hsl(12, 80%, 24%);
+    --banda-color-secondary: var(--banda-color-secondary-500);
+
+    /* Neutral - Cool gray scale */
+    --banda-color-neutral-50: hsl(220, 14%, 98%);
+    --banda-color-neutral-100: hsl(220, 14%, 96%);
+    --banda-color-neutral-200: hsl(220, 14%, 91%);
+    --banda-color-neutral-300: hsl(220, 14%, 82%);
+    --banda-color-neutral-400: hsl(220, 14%, 64%);
+    --banda-color-neutral-500: hsl(220, 14%, 46%);
+    --banda-color-neutral-600: hsl(220, 14%, 34%);
+    --banda-color-neutral-700: hsl(220, 14%, 25%);
+    --banda-color-neutral-800: hsl(220, 14%, 16%);
+    --banda-color-neutral-900: hsl(220, 14%, 10%);
+    --banda-color-neutral: var(--banda-color-neutral-500);
+
+    /* Success - Fresh green */
+    --banda-color-success-50: hsl(152, 68%, 96%);
+    --banda-color-success-100: hsl(152, 68%, 90%);
+    --banda-color-success-200: hsl(152, 68%, 80%);
+    --banda-color-success-300: hsl(152, 68%, 65%);
+    --banda-color-success-400: hsl(152, 68%, 50%);
+    --banda-color-success-500: hsl(152, 68%, 40%);
+    --banda-color-success-600: hsl(152, 68%, 32%);
+    --banda-color-success-700: hsl(152, 68%, 26%);
+    --banda-color-success-800: hsl(152, 68%, 20%);
+    --banda-color-success-900: hsl(152, 68%, 14%);
+    --banda-color-success: var(--banda-color-success-500);
+
+    /* Warning - Amber tones */
+    --banda-color-warning-50: hsl(45, 100%, 96%);
+    --banda-color-warning-100: hsl(45, 100%, 90%);
+    --banda-color-warning-200: hsl(45, 100%, 80%);
+    --banda-color-warning-300: hsl(45, 100%, 70%);
+    --banda-color-warning-400: hsl(45, 100%, 60%);
+    --banda-color-warning-500: hsl(45, 100%, 50%);
+    --banda-color-warning-600: hsl(45, 100%, 42%);
+    --banda-color-warning-700: hsl(45, 100%, 34%);
+    --banda-color-warning-800: hsl(45, 100%, 26%);
+    --banda-color-warning-900: hsl(45, 100%, 18%);
+    --banda-color-warning: var(--banda-color-warning-500);
+
+    /* Danger - Vibrant red */
+    --banda-color-danger-50: hsl(0, 84%, 97%);
+    --banda-color-danger-100: hsl(0, 84%, 94%);
+    --banda-color-danger-200: hsl(0, 84%, 86%);
+    --banda-color-danger-300: hsl(0, 84%, 74%);
+    --banda-color-danger-400: hsl(0, 84%, 62%);
+    --banda-color-danger-500: hsl(0, 84%, 50%);
+    --banda-color-danger-600: hsl(0, 84%, 42%);
+    --banda-color-danger-700: hsl(0, 84%, 34%);
+    --banda-color-danger-800: hsl(0, 84%, 26%);
+    --banda-color-danger-900: hsl(0, 84%, 18%);
+    --banda-color-danger: var(--banda-color-danger-500);
+
+    /* Surface colors */
+    --banda-color-background: hsl(220, 14%, 98%);
+    --banda-color-surface: hsl(0, 0%, 100%);
+    --banda-color-surface-elevated: hsl(0, 0%, 100%);
+    --banda-color-overlay: hsla(220, 14%, 10%, 0.5);
+
+    /* Text colors */
+    --banda-color-text-primary: hsl(220, 14%, 10%);
+    --banda-color-text-secondary: hsl(220, 14%, 34%);
+    --banda-color-text-tertiary: hsl(220, 14%, 46%);
+    --banda-color-text-disabled: hsl(220, 14%, 64%);
+    --banda-color-text-inverse: hsl(0, 0%, 100%);
+
+    /* Border colors */
+    --banda-color-border: hsl(220, 14%, 91%);
+    --banda-color-border-hover: hsl(220, 14%, 82%);
+    --banda-color-border-focus: var(--banda-color-primary-400);
+
+    /* ========================================
+     SPACING
+     ======================================== */
+    --banda-space-0: 0;
+    --banda-space-1: 0.25rem;
+    /* 4px */
+    --banda-space-2: 0.5rem;
+    /* 8px */
+    --banda-space-3: 0.75rem;
+    /* 12px */
+    --banda-space-4: 1rem;
+    /* 16px */
+    --banda-space-5: 1.25rem;
+    /* 20px */
+    --banda-space-6: 1.5rem;
+    /* 24px */
+    --banda-space-8: 2rem;
+    /* 32px */
+    --banda-space-10: 2.5rem;
+    /* 40px */
+    --banda-space-12: 3rem;
+    /* 48px */
+    --banda-space-16: 4rem;
+    /* 64px */
+    --banda-space-20: 5rem;
+    /* 80px */
+    --banda-space-24: 6rem;
+    /* 96px */
+
+    /* Semantic spacing */
+    --banda-space-xs: var(--banda-space-1);
+    --banda-space-sm: var(--banda-space-2);
+    --banda-space-md: var(--banda-space-4);
+    --banda-space-lg: var(--banda-space-6);
+    --banda-space-xl: var(--banda-space-8);
+    --banda-space-2xl: var(--banda-space-12);
+
+    /* ========================================
+     BORDER RADIUS
+     ======================================== */
+    --banda-radius-none: 0;
+    --banda-radius-sm: 0.25rem;
+    /* 4px */
+    --banda-radius-md: 0.5rem;
+    /* 8px */
+    --banda-radius-lg: 0.75rem;
+    /* 12px */
+    --banda-radius-xl: 1rem;
+    /* 16px */
+    --banda-radius-2xl: 1.5rem;
+    /* 24px */
+    --banda-radius-full: 9999px;
+
+    /* ========================================
+     SHADOWS
+     ======================================== */
+    --banda-shadow-sm: 0 1px 2px 0 hsla(220, 14%, 10%, 0.05);
+    --banda-shadow-md: 0 4px 6px -1px hsla(220, 14%, 10%, 0.1),
+        0 2px 4px -2px hsla(220, 14%, 10%, 0.1);
+    --banda-shadow-lg: 0 10px 15px -3px hsla(220, 14%, 10%, 0.1),
+        0 4px 6px -4px hsla(220, 14%, 10%, 0.1);
+    --banda-shadow-xl: 0 20px 25px -5px hsla(220, 14%, 10%, 0.1),
+        0 8px 10px -6px hsla(220, 14%, 10%, 0.1);
+    --banda-shadow-2xl: 0 25px 50px -12px hsla(220, 14%, 10%, 0.25);
+    --banda-shadow-inner: inset 0 2px 4px 0 hsla(220, 14%, 10%, 0.05);
+
+    /* Focus ring shadow */
+    --banda-shadow-focus: 0 0 0 3px hsla(243, 75%, 52%, 0.4);
+
+    /* ========================================
+     TRANSITIONS
+     ======================================== */
+    --banda-transition-fast: 100ms ease-out;
+    --banda-transition-normal: 200ms ease-out;
+    --banda-transition-slow: 300ms ease-out;
+    --banda-transition-slower: 500ms ease-out;
+
+    /* Specific transitions */
+    --banda-transition-colors: color var(--banda-transition-normal),
+        background-color var(--banda-transition-normal),
+        border-color var(--banda-transition-normal);
+    --banda-transition-transform: transform var(--banda-transition-fast);
+    --banda-transition-opacity: opacity var(--banda-transition-normal);
+    --banda-transition-shadow: box-shadow var(--banda-transition-normal);
+    --banda-transition-all: all var(--banda-transition-normal);
+
+    /* ========================================
+     Z-INDEX SCALE
+     ======================================== */
+    --banda-z-base: 0;
+    --banda-z-dropdown: 100;
+    --banda-z-sticky: 200;
+    --banda-z-fixed: 300;
+    --banda-z-modal-backdrop: 400;
+    --banda-z-modal: 500;
+    --banda-z-popover: 600;
+    --banda-z-tooltip: 700;
+}
+
+/* ========================================
+   DARK MODE
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Inverted surface colors */
+        --banda-color-background: hsl(220, 14%, 8%);
+        --banda-color-surface: hsl(220, 14%, 12%);
+        --banda-color-surface-elevated: hsl(220, 14%, 16%);
+        --banda-color-overlay: hsla(0, 0%, 0%, 0.7);
+
+        /* Inverted text colors */
+        --banda-color-text-primary: hsl(220, 14%, 96%);
+        --banda-color-text-secondary: hsl(220, 14%, 82%);
+        --banda-color-text-tertiary: hsl(220, 14%, 64%);
+        --banda-color-text-disabled: hsl(220, 14%, 46%);
+
+        /* Inverted border colors */
+        --banda-color-border: hsl(220, 14%, 22%);
+        --banda-color-border-hover: hsl(220, 14%, 30%);
+    }
+}
+
+/* Manual dark mode class override */
+.banda-dark {
+    --banda-color-background: hsl(220, 14%, 8%);
+    --banda-color-surface: hsl(220, 14%, 12%);
+    --banda-color-surface-elevated: hsl(220, 14%, 16%);
+    --banda-color-overlay: hsla(0, 0%, 0%, 0.7);
+    --banda-color-text-primary: hsl(220, 14%, 96%);
+    --banda-color-text-secondary: hsl(220, 14%, 82%);
+    --banda-color-text-tertiary: hsl(220, 14%, 64%);
+    --banda-color-text-disabled: hsl(220, 14%, 46%);
+    --banda-color-border: hsl(220, 14%, 22%);
+    --banda-color-border-hover: hsl(220, 14%, 30%);
+}

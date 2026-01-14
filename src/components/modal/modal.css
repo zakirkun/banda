@@ -1,0 +1,229 @@
+/**
+ * Banda Modal Component Styles
+ */
+
+/* ========================================
+   MODAL BACKDROP
+   ======================================== */
+
+.banda-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--banda-z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--banda-space-4);
+    background-color: var(--banda-color-overlay);
+    animation: banda-backdrop-in var(--banda-transition-normal) forwards;
+}
+
+.banda-modal-backdrop--closing {
+    animation: banda-backdrop-out var(--banda-transition-normal) forwards;
+}
+
+/* ========================================
+   MODAL CONTAINER
+   ======================================== */
+
+.banda-modal {
+    position: relative;
+    z-index: var(--banda-z-modal);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: calc(100vh - var(--banda-space-8));
+    background-color: var(--banda-color-surface);
+    border-radius: var(--banda-radius-xl);
+    box-shadow: var(--banda-shadow-2xl);
+    animation: banda-modal-in var(--banda-transition-slow) forwards;
+    overflow: hidden;
+}
+
+.banda-modal--closing {
+    animation: banda-modal-out var(--banda-transition-normal) forwards;
+}
+
+/* ========================================
+   MODAL SIZES
+   ======================================== */
+
+.banda-modal--sm {
+    max-width: 400px;
+}
+
+.banda-modal--md {
+    max-width: 560px;
+}
+
+.banda-modal--lg {
+    max-width: 800px;
+}
+
+.banda-modal--xl {
+    max-width: 1024px;
+}
+
+.banda-modal--full {
+    max-width: calc(100vw - var(--banda-space-8));
+    max-height: calc(100vh - var(--banda-space-8));
+}
+
+/* ========================================
+   MODAL SECTIONS
+   ======================================== */
+
+/* Header */
+.banda-modal__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--banda-space-4);
+    padding: var(--banda-space-5) var(--banda-space-6);
+    border-bottom: 1px solid var(--banda-color-border);
+    flex-shrink: 0;
+}
+
+.banda-modal__header-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.banda-modal__title {
+    font-size: var(--banda-text-lg);
+    font-weight: var(--banda-weight-semibold);
+    color: var(--banda-color-text-primary);
+    margin: 0;
+}
+
+.banda-modal__description {
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-tertiary);
+    margin: var(--banda-space-1) 0 0 0;
+}
+
+/* Close button */
+.banda-modal__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--banda-color-text-tertiary);
+    border-radius: var(--banda-radius-md);
+    cursor: pointer;
+    transition: var(--banda-transition-colors);
+    flex-shrink: 0;
+}
+
+.banda-modal__close:hover {
+    background-color: var(--banda-color-neutral-100);
+    color: var(--banda-color-text-primary);
+}
+
+.banda-modal__close:focus-visible {
+    outline: none;
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-modal__close-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.banda-modal__close-icon::before,
+.banda-modal__close-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 14px;
+    height: 2px;
+    background-color: currentColor;
+    border-radius: 1px;
+}
+
+.banda-modal__close-icon::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.banda-modal__close-icon::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Body */
+.banda-modal__body {
+    flex: 1;
+    padding: var(--banda-space-6);
+    overflow-y: auto;
+}
+
+.banda-modal__body:first-child {
+    padding-top: var(--banda-space-6);
+}
+
+.banda-modal__body:last-child {
+    padding-bottom: var(--banda-space-6);
+}
+
+/* Footer */
+.banda-modal__footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--banda-space-3);
+    padding: var(--banda-space-4) var(--banda-space-6);
+    border-top: 1px solid var(--banda-color-border);
+    background-color: var(--banda-color-neutral-50);
+    flex-shrink: 0;
+}
+
+.banda-modal__footer--left {
+    justify-content: flex-start;
+}
+
+.banda-modal__footer--center {
+    justify-content: center;
+}
+
+.banda-modal__footer--between {
+    justify-content: space-between;
+}
+
+/* ========================================
+   SCROLLBAR IN MODAL BODY
+   ======================================== */
+
+.banda-modal__body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.banda-modal__body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.banda-modal__body::-webkit-scrollbar-thumb {
+    background: var(--banda-color-neutral-300);
+    border-radius: var(--banda-radius-full);
+}
+
+.banda-modal__body::-webkit-scrollbar-thumb:hover {
+    background: var(--banda-color-neutral-400);
+}
+
+/* ========================================
+   CENTERED MODAL (e.g., confirmation dialogs)
+   ======================================== */
+
+.banda-modal--centered .banda-modal__body {
+    text-align: center;
+    padding: var(--banda-space-8);
+}
+
+.banda-modal--centered .banda-modal__footer {
+    justify-content: center;
+}

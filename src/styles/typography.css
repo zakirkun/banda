@@ -1,0 +1,220 @@
+/**
+ * Banda Typography System
+ * 
+ * Font families, sizes, weights, and line heights.
+ * Uses Inter as the primary font with system fallbacks.
+ */
+
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    /* ========================================
+     FONT FAMILIES
+     ======================================== */
+    --banda-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    --banda-font-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco,
+        'Andale Mono', 'Ubuntu Mono', monospace;
+
+    /* ========================================
+     FONT SIZES
+     ======================================== */
+    --banda-text-xs: 0.75rem;
+    /* 12px */
+    --banda-text-sm: 0.875rem;
+    /* 14px */
+    --banda-text-base: 1rem;
+    /* 16px */
+    --banda-text-lg: 1.125rem;
+    /* 18px */
+    --banda-text-xl: 1.25rem;
+    /* 20px */
+    --banda-text-2xl: 1.5rem;
+    /* 24px */
+    --banda-text-3xl: 1.875rem;
+    /* 30px */
+    --banda-text-4xl: 2.25rem;
+    /* 36px */
+    --banda-text-5xl: 3rem;
+    /* 48px */
+    --banda-text-6xl: 3.75rem;
+    /* 60px */
+
+    /* ========================================
+     FONT WEIGHTS
+     ======================================== */
+    --banda-weight-normal: 400;
+    --banda-weight-medium: 500;
+    --banda-weight-semibold: 600;
+    --banda-weight-bold: 700;
+
+    /* ========================================
+     LINE HEIGHTS
+     ======================================== */
+    --banda-leading-none: 1;
+    --banda-leading-tight: 1.25;
+    --banda-leading-snug: 1.375;
+    --banda-leading-normal: 1.5;
+    --banda-leading-relaxed: 1.625;
+    --banda-leading-loose: 2;
+
+    /* ========================================
+     LETTER SPACING
+     ======================================== */
+    --banda-tracking-tighter: -0.05em;
+    --banda-tracking-tight: -0.025em;
+    --banda-tracking-normal: 0;
+    --banda-tracking-wide: 0.025em;
+    --banda-tracking-wider: 0.05em;
+    --banda-tracking-widest: 0.1em;
+}
+
+/* ========================================
+   BASE TYPOGRAPHY STYLES
+   ======================================== */
+
+body {
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-base);
+    font-weight: var(--banda-weight-normal);
+    line-height: var(--banda-leading-normal);
+    color: var(--banda-color-text-primary);
+    background-color: var(--banda-color-background);
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: var(--banda-weight-semibold);
+    line-height: var(--banda-leading-tight);
+    color: var(--banda-color-text-primary);
+}
+
+h1 {
+    font-size: var(--banda-text-4xl);
+    letter-spacing: var(--banda-tracking-tight);
+}
+
+h2 {
+    font-size: var(--banda-text-3xl);
+    letter-spacing: var(--banda-tracking-tight);
+}
+
+h3 {
+    font-size: var(--banda-text-2xl);
+}
+
+h4 {
+    font-size: var(--banda-text-xl);
+}
+
+h5 {
+    font-size: var(--banda-text-lg);
+}
+
+h6 {
+    font-size: var(--banda-text-base);
+    font-weight: var(--banda-weight-medium);
+}
+
+/* Paragraph */
+p {
+    margin-bottom: var(--banda-space-4);
+    color: var(--banda-color-text-secondary);
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+/* Links */
+a {
+    color: var(--banda-color-primary);
+    text-decoration: none;
+    transition: var(--banda-transition-colors);
+}
+
+a:hover {
+    color: var(--banda-color-primary-600);
+    text-decoration: underline;
+}
+
+a:focus-visible {
+    outline: 2px solid var(--banda-color-primary);
+    outline-offset: 2px;
+    border-radius: var(--banda-radius-sm);
+}
+
+/* Small text */
+small {
+    font-size: var(--banda-text-sm);
+    color: var(--banda-color-text-tertiary);
+}
+
+/* Strong/Bold */
+strong,
+b {
+    font-weight: var(--banda-weight-semibold);
+}
+
+/* Emphasis/Italic */
+em,
+i {
+    font-style: italic;
+}
+
+/* Code */
+code {
+    font-family: var(--banda-font-mono);
+    font-size: 0.875em;
+    background-color: var(--banda-color-neutral-100);
+    padding: 0.125em 0.375em;
+    border-radius: var(--banda-radius-sm);
+}
+
+/* Pre-formatted code blocks */
+pre {
+    font-family: var(--banda-font-mono);
+    font-size: var(--banda-text-sm);
+    background-color: var(--banda-color-neutral-900);
+    color: var(--banda-color-neutral-100);
+    padding: var(--banda-space-4);
+    border-radius: var(--banda-radius-md);
+    overflow-x: auto;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--banda-color-primary-300);
+    padding-left: var(--banda-space-4);
+    margin: var(--banda-space-4) 0;
+    color: var(--banda-color-text-secondary);
+    font-style: italic;
+}
+
+/* Horizontal rule */
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--banda-color-border);
+    margin: var(--banda-space-6) 0;
+}
+
+/* Selection */
+::selection {
+    background-color: var(--banda-color-primary-200);
+    color: var(--banda-color-primary-900);
+}

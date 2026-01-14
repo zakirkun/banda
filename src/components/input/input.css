@@ -1,0 +1,209 @@
+/**
+ * Banda Input Component Styles
+ */
+
+/* ========================================
+   BASE INPUT
+   ======================================== */
+
+.banda-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--banda-space-1);
+}
+
+.banda-input-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-md);
+    transition: var(--banda-transition-colors), var(--banda-transition-shadow);
+    overflow: hidden;
+}
+
+.banda-input-container:hover {
+    border-color: var(--banda-color-border-hover);
+}
+
+.banda-input-container:focus-within {
+    border-color: var(--banda-color-primary);
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-input {
+    flex: 1;
+    width: 100%;
+    padding: var(--banda-space-2) var(--banda-space-3);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-sm);
+    line-height: var(--banda-leading-normal);
+    color: var(--banda-color-text-primary);
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.banda-input::placeholder {
+    color: var(--banda-color-text-disabled);
+}
+
+/* ========================================
+   INPUT SIZES
+   ======================================== */
+
+.banda-input-container--sm .banda-input {
+    padding: var(--banda-space-1) var(--banda-space-2);
+    font-size: var(--banda-text-xs);
+}
+
+.banda-input-container--lg .banda-input {
+    padding: var(--banda-space-3) var(--banda-space-4);
+    font-size: var(--banda-text-base);
+}
+
+/* ========================================
+   INPUT STATES
+   ======================================== */
+
+/* Error state */
+.banda-input-container--error {
+    border-color: var(--banda-color-danger);
+}
+
+.banda-input-container--error:focus-within {
+    box-shadow: 0 0 0 3px hsla(0, 84%, 50%, 0.2);
+}
+
+/* Success state */
+.banda-input-container--success {
+    border-color: var(--banda-color-success);
+}
+
+.banda-input-container--success:focus-within {
+    box-shadow: 0 0 0 3px hsla(152, 68%, 40%, 0.2);
+}
+
+/* Disabled state */
+.banda-input-container--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--banda-color-neutral-100);
+}
+
+.banda-input-container--disabled .banda-input {
+    cursor: not-allowed;
+}
+
+/* ========================================
+   INPUT LABEL & HELPER
+   ======================================== */
+
+.banda-input-label {
+    display: block;
+    font-size: var(--banda-text-sm);
+    font-weight: var(--banda-weight-medium);
+    color: var(--banda-color-text-primary);
+}
+
+.banda-input-label--required::after {
+    content: ' *';
+    color: var(--banda-color-danger);
+}
+
+.banda-input-helper {
+    font-size: var(--banda-text-xs);
+    color: var(--banda-color-text-tertiary);
+}
+
+.banda-input-helper--error {
+    color: var(--banda-color-danger);
+}
+
+.banda-input-helper--success {
+    color: var(--banda-color-success);
+}
+
+/* ========================================
+   INPUT ADDONS (Prefix/Suffix)
+   ======================================== */
+
+.banda-input-prefix,
+.banda-input-suffix {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--banda-space-3);
+    color: var(--banda-color-text-tertiary);
+    background-color: var(--banda-color-neutral-50);
+    font-size: var(--banda-text-sm);
+}
+
+.banda-input-prefix {
+    border-right: 1px solid var(--banda-color-border);
+}
+
+.banda-input-suffix {
+    border-left: 1px solid var(--banda-color-border);
+}
+
+/* Icon inside input */
+.banda-input-icon {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--banda-space-2);
+    color: var(--banda-color-text-tertiary);
+}
+
+.banda-input-icon--left {
+    padding-left: var(--banda-space-3);
+    padding-right: 0;
+}
+
+.banda-input-icon--right {
+    padding-right: var(--banda-space-3);
+    padding-left: 0;
+}
+
+/* ========================================
+   TEXTAREA
+   ======================================== */
+
+.banda-textarea {
+    display: block;
+    width: 100%;
+    min-height: 100px;
+    padding: var(--banda-space-3);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-sm);
+    line-height: var(--banda-leading-normal);
+    color: var(--banda-color-text-primary);
+    background-color: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-md);
+    resize: vertical;
+    transition: var(--banda-transition-colors), var(--banda-transition-shadow);
+}
+
+.banda-textarea:hover {
+    border-color: var(--banda-color-border-hover);
+}
+
+.banda-textarea:focus {
+    outline: none;
+    border-color: var(--banda-color-primary);
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-textarea::placeholder {
+    color: var(--banda-color-text-disabled);
+}
+
+.banda-textarea--error {
+    border-color: var(--banda-color-danger);
+}
+
+.banda-textarea:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--banda-color-neutral-100);
+}

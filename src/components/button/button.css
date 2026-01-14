@@ -1,0 +1,215 @@
+/**
+ * Banda Button Component Styles
+ */
+
+/* ========================================
+   BASE BUTTON
+   ======================================== */
+
+.banda-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--banda-space-2);
+    padding: var(--banda-space-2) var(--banda-space-4);
+    font-family: var(--banda-font-sans);
+    font-size: var(--banda-text-sm);
+    font-weight: var(--banda-weight-medium);
+    line-height: var(--banda-leading-tight);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: var(--banda-radius-md);
+    transition: var(--banda-transition-colors), var(--banda-transition-shadow);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.banda-button:focus-visible {
+    outline: none;
+    box-shadow: var(--banda-shadow-focus);
+}
+
+.banda-button:disabled,
+.banda-button.banda-button--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ========================================
+   BUTTON VARIANTS
+   ======================================== */
+
+/* Primary */
+.banda-button--primary {
+    background-color: var(--banda-color-primary);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-button--primary:hover {
+    background-color: var(--banda-color-primary-600);
+}
+
+.banda-button--primary:active {
+    background-color: var(--banda-color-primary-700);
+}
+
+/* Secondary */
+.banda-button--secondary {
+    background-color: var(--banda-color-neutral-100);
+    color: var(--banda-color-text-primary);
+    border-color: var(--banda-color-border);
+}
+
+.banda-button--secondary:hover {
+    background-color: var(--banda-color-neutral-200);
+    border-color: var(--banda-color-border-hover);
+}
+
+.banda-button--secondary:active {
+    background-color: var(--banda-color-neutral-300);
+}
+
+/* Ghost */
+.banda-button--ghost {
+    background-color: transparent;
+    color: var(--banda-color-text-primary);
+}
+
+.banda-button--ghost:hover {
+    background-color: var(--banda-color-neutral-100);
+}
+
+.banda-button--ghost:active {
+    background-color: var(--banda-color-neutral-200);
+}
+
+/* Danger */
+.banda-button--danger {
+    background-color: var(--banda-color-danger);
+    color: var(--banda-color-text-inverse);
+}
+
+.banda-button--danger:hover {
+    background-color: var(--banda-color-danger-600);
+}
+
+.banda-button--danger:active {
+    background-color: var(--banda-color-danger-700);
+}
+
+/* Outline Primary */
+.banda-button--outline {
+    background-color: transparent;
+    color: var(--banda-color-primary);
+    border-color: var(--banda-color-primary);
+}
+
+.banda-button--outline:hover {
+    background-color: var(--banda-color-primary-50);
+}
+
+.banda-button--outline:active {
+    background-color: var(--banda-color-primary-100);
+}
+
+/* ========================================
+   BUTTON SIZES
+   ======================================== */
+
+.banda-button--sm {
+    padding: var(--banda-space-1) var(--banda-space-3);
+    font-size: var(--banda-text-xs);
+    border-radius: var(--banda-radius-sm);
+}
+
+.banda-button--lg {
+    padding: var(--banda-space-3) var(--banda-space-6);
+    font-size: var(--banda-text-base);
+    border-radius: var(--banda-radius-lg);
+}
+
+.banda-button--xl {
+    padding: var(--banda-space-4) var(--banda-space-8);
+    font-size: var(--banda-text-lg);
+    border-radius: var(--banda-radius-lg);
+}
+
+/* ========================================
+   BUTTON STATES
+   ======================================== */
+
+/* Loading state */
+.banda-button--loading {
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+}
+
+.banda-button--loading::after {
+    content: '';
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: banda-spin 0.6s linear infinite;
+}
+
+.banda-button--primary.banda-button--loading::after {
+    border-color: var(--banda-color-text-inverse);
+    border-right-color: transparent;
+}
+
+/* Full width */
+.banda-button--full {
+    width: 100%;
+}
+
+/* Icon only (square) */
+.banda-button--icon {
+    padding: var(--banda-space-2);
+    aspect-ratio: 1;
+}
+
+.banda-button--icon.banda-button--sm {
+    padding: var(--banda-space-1);
+}
+
+.banda-button--icon.banda-button--lg {
+    padding: var(--banda-space-3);
+}
+
+/* ========================================
+   BUTTON GROUP
+   ======================================== */
+
+.banda-button-group {
+    display: inline-flex;
+}
+
+.banda-button-group .banda-button {
+    border-radius: 0;
+}
+
+.banda-button-group .banda-button:first-child {
+    border-top-left-radius: var(--banda-radius-md);
+    border-bottom-left-radius: var(--banda-radius-md);
+}
+
+.banda-button-group .banda-button:last-child {
+    border-top-right-radius: var(--banda-radius-md);
+    border-bottom-right-radius: var(--banda-radius-md);
+}
+
+.banda-button-group .banda-button:not(:last-child) {
+    border-right-width: 0;
+}
+
+.banda-button-group .banda-button--secondary:not(:last-child) {
+    border-right-width: 1px;
+    border-right-color: var(--banda-color-border);
+}
