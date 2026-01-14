@@ -46,6 +46,8 @@
 - ♿ **Accessible** — ARIA, keyboard navigation, focus management
 - 🌙 **Dark Mode** — Built-in support via CSS variables
 - ⚡ **Lightweight** — Direct DOM manipulation, no overhead
+- ✅ **Form Validation** — Built-in rules and form state management
+- 🔌 **Plugin System** — Extensible architecture with hooks
 
 ---
 
@@ -101,6 +103,7 @@ bun run build    # Production build
 | **Button** | 5 variants, 4 sizes, loading states |
 | **Input** | Labels, validation, prefix/suffix |
 | **Select** | Searchable dropdown with groups |
+| **DatePicker** | Calendar with date constraints |
 | **Textarea** | Multi-line input |
 
 ### Layout
@@ -118,6 +121,7 @@ bun run build    # Production build
 | **Card** | Content container with sections |
 | **Badge** | Status labels and counts |
 | **Tabs** | Tabbed navigation |
+| **Table** | Data table with sorting, pagination, selection |
 
 ### Feedback
 | Component | Description |
@@ -210,7 +214,7 @@ Stack({
 ```
 banda/
 ├── src/
-│   ├── core/           # Element, state, events, mount
+│   ├── core/           # Element, state, events, mount, validation, plugins
 │   ├── styles/         # CSS reset, tokens, typography
 │   ├── components/     # UI components
 │   │   ├── button/
@@ -221,7 +225,9 @@ banda/
 │   │   ├── layout/
 │   │   ├── feedback/
 │   │   ├── tabs/
-│   │   └── select/
+│   │   ├── select/
+│   │   ├── datepicker/
+│   │   └── table/
 │   └── demo/           # Demo application
 ├── docs/               # Documentation
 └── package.json
@@ -239,10 +245,13 @@ banda/
 - [x] Feedback components (Alert, Toast, Tooltip)
 - [x] Tabs and Select
 - [x] Comprehensive documentation
-- [ ] Form validation helpers
-- [ ] Plugin system
-- [ ] Date picker
-- [ ] Data table
+- [x] Form validation helpers
+- [x] Plugin system
+- [x] Date picker
+- [x] Data table
+- [ ] Rich text editor
+- [ ] Color picker
+- [ ] File upload
 
 ---
 
