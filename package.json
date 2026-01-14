@@ -1,18 +1,20 @@
 {
-  "name": "banda",
+  "name": "banda-ui",
   "version": "0.1.0",
-  "description": "A lightweight, elegant TypeScript UI framework",
-  "module": "src/index.ts",
+  "description": "A lightweight, elegant TypeScript UI framework inspired by the Banda Islands",
+  "module": "dist/index.js",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "bun run src/demo/server.ts",
-    "build": "bun build src/index.ts --outdir ./dist --minify",
-    "typecheck": "tsc --noEmit"
+    "build": "bun build src/index.ts --outdir ./dist --target=browser --minify",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "bun run build"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "typescript": "^5.0.0"
   },
   "peerDependencies": {
     "typescript": "^5"
@@ -22,24 +24,39 @@
     "framework",
     "typescript",
     "components",
-    "frontend"
+    "frontend",
+    "dom",
+    "reactive",
+    "lightweight",
+    "zero-dependency",
+    "design-system"
   ],
-  "author": "",
+  "author": "zakirkun",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/zakirkun/banda.git"
+  },
+  "homepage": "https://github.com/zakirkun/banda#readme",
+  "bugs": {
+    "url": "https://github.com/zakirkun/banda/issues"
   },
   "exports": {
     ".": {
-      "import": "./src/index.ts",
-      "types": "./src/index.ts"
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
     },
     "./styles/*": "./src/styles/*",
     "./components/*": "./src/components/*"
   },
   "files": [
-    "src",
-    "dist"
+    "dist",
+    "src/styles",
+    "src/components",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": [
+    "**/*.css"
   ]
 }
