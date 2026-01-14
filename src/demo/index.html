@@ -1,852 +1,203 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="cyber">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banda — A UI Framework Rooted in Simplicity</title>
-    <meta name="description"
-        content="Banda is a DOM-first TypeScript UI framework with fine-grained reactivity. Inspired by the Banda Islands — small in size, vast in impact.">
-
-    <!-- Favicon -->
-    <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌴</text></svg>">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
-
-    <!-- Banda Styles -->
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/components/button/button.css">
-    <link rel="stylesheet" href="/components/card/card.css">
-    <link rel="stylesheet" href="/components/input/input.css">
-    <link rel="stylesheet" href="/components/badge/badge.css">
-    <link rel="stylesheet" href="/components/modal/modal.css">
-    <link rel="stylesheet" href="/components/layout/layout.css">
-    <link rel="stylesheet" href="/components/feedback/feedback.css">
-    <link rel="stylesheet" href="/components/tabs/tabs.css">
-    <link rel="stylesheet" href="/components/select/select.css">
-
-    <style>
-        :root {
-            /* Light Mode */
-            --bg: #faf9f7;
-            --bg-subtle: #f5f3f0;
-            --text: #1a1a1a;
-            --text-muted: #64635e;
-            --text-subtle: #9a9890;
-            --accent: #2c5545;
-            --accent-light: #3d7a5f;
-            --border: rgba(0, 0, 0, 0.08);
-            --surface: #ffffff;
-
-            /* Spice Theme */
-            --spice-warm: #c4a77d;
-            --spice-deep: #8b5a2b;
-            --ocean-deep: #1a3a4a;
-            --coral: #e07a5f;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg: #0d0d0d;
-                --bg-subtle: #161616;
-                --text: #f5f5f5;
-                --text-muted: #a0a0a0;
-                --text-subtle: #666666;
-                --accent: #7fb69a;
-                --accent-light: #9fd4b8;
-                --border: rgba(255, 255, 255, 0.08);
-                --surface: #1a1a1a;
-            }
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        /* Typography */
-        .serif {
-            font-family: 'Newsreader', Georgia, serif;
-        }
-
-        /* Sections */
-        section {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 6rem 2rem;
-        }
-
-        .narrow {
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
-        .centered {
-            text-align: center;
-        }
-
-        /* ================================================
-       NAVIGATION
-       ================================================ */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            mix-blend-mode: difference;
-        }
-
-        .nav-logo {
-            font-family: 'Newsreader', serif;
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #fff;
-            text-decoration: none;
-            letter-spacing: 0.02em;
-        }
-
-        .nav-link {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.875rem;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .nav-link:hover {
-            opacity: 1;
-        }
-
-        /* ================================================
-       HERO — "The First Breath"
-       ================================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(180deg,
-                    var(--bg) 0%,
-                    var(--bg-subtle) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center,
-                    rgba(44, 85, 69, 0.03) 0%,
-                    transparent 70%);
-            animation: drift 20s ease-in-out infinite;
-        }
-
-        @keyframes drift {
-
-            0%,
-            100% {
-                transform: translate(0, 0) rotate(0deg);
-            }
-
-            50% {
-                transform: translate(3%, 3%) rotate(2deg);
-            }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            animation: fadeUp 0.8s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-title {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(4rem, 12vw, 8rem);
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            line-height: 1;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.35rem);
-            color: var(--text-muted);
-            max-width: 400px;
-            margin: 0 auto 3rem;
-            line-height: 1.7;
-        }
-
-        .hero-subtitle em {
-            font-style: normal;
-            color: var(--text);
-        }
-
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeUp 0.8s ease-out 0.3s both;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--text-subtle);
-            font-size: 0.875rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(4px);
-            }
-        }
-
-        /* ================================================
-       PHILOSOPHY — "A Framework With Memory"
-       ================================================ */
-        .philosophy {
-            background: var(--bg);
-            padding: 8rem 2rem;
-        }
-
-        .philosophy-content {
-            max-width: 560px;
-            margin: 0 auto;
-        }
-
-        .philosophy-text {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            line-height: 1.8;
-            color: var(--text-muted);
-        }
-
-        .philosophy-text strong {
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .philosophy-line {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
-        }
-
-        .philosophy-line.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ================================================
-       VALUES — "Clarity Over Cleverness"
-       ================================================ */
-        .values {
-            background: var(--bg-subtle);
-            padding: 8rem 2rem;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .value-pillar {
-            text-align: center;
-            transition: opacity 0.3s;
-        }
-
-        .value-pillar h3 {
-            font-family: 'Newsreader', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .value-pillar p {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.8;
-        }
-
-        .values-grid:hover .value-pillar {
-            opacity: 0.4;
-        }
-
-        .values-grid .value-pillar:hover {
-            opacity: 1;
-        }
-
-        /* ================================================
-       ENGINE — "How Banda Works"
-       ================================================ */
-        .engine {
-            background: var(--bg);
-            padding: 8rem 2rem;
-        }
-
-        .engine-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            max-width: 1100px;
-            margin: 0 auto;
-            align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .engine-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .engine-text h2 {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .engine-text p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .code-block {
-            background: #1a1a2e;
-            border-radius: 12px;
-            overflow: hidden;
-            font-family: 'Monaco', 'Consolas', monospace;
-            font-size: 0.9rem;
-        }
-
-        .code-header {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 1.25rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .code-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .code-dot.r {
-            background: #ff5f56;
-        }
-
-        .code-dot.y {
-            background: #ffbd2e;
-        }
-
-        .code-dot.g {
-            background: #27c93f;
-        }
-
-        .code-body {
-            padding: 1.25rem;
-            color: #e1e1e1;
-            line-height: 1.7;
-            overflow-x: auto;
-        }
-
-        .code-body .kw {
-            color: #c792ea;
-        }
-
-        .code-body .fn {
-            color: #82aaff;
-        }
-
-        .code-body .st {
-            color: #c3e88d;
-        }
-
-        .code-body .cm {
-            color: #546e7a;
-        }
-
-        .code-body .op {
-            color: #89ddff;
-        }
-
-        .code-hint {
-            padding: 1rem 1.25rem;
-            background: rgba(127, 182, 154, 0.1);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--accent-light);
-            font-size: 0.85rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* ================================================
-       COMPONENTS — "Crafted, Not Assembled"
-       ================================================ */
-        .components {
-            background: var(--bg-subtle);
-            padding: 8rem 2rem;
-        }
-
-        .components-header {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 4rem;
-        }
-
-        .components-header h2 {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .components-header p {
-            color: var(--text-muted);
-        }
-
-        #component-showcase {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .component-moment {
-            margin-bottom: 4rem;
-            padding: 2rem;
-            background: var(--surface);
-            border-radius: 16px;
-            border: 1px solid var(--border);
-        }
-
-        .component-moment h3 {
-            font-family: 'Newsreader', serif;
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        /* ================================================
-       THEMING
-       ================================================ */
-        .theming {
-            background: var(--bg);
-            padding: 8rem 2rem;
-        }
-
-        .theming-content {
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .theming-content h2 {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
-        .theming-content p {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .theme-switcher {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .theme-preview {
-            padding: 2rem;
-            background: var(--surface);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-
-        /* ================================================
-       ORIGIN — "Why Banda Exists"
-       ================================================ */
-        .origin {
-            background: linear-gradient(180deg, var(--ocean-deep) 0%, #0d1a1f 100%);
-            color: #fff;
-            padding: 8rem 2rem;
-        }
-
-        .origin-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .origin-content h2 {
-            font-family: 'Newsreader', serif;
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            font-weight: 400;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .origin-content blockquote {
-            font-family: 'Newsreader', serif;
-            font-size: 1.35rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, 0.75);
-            font-style: italic;
-        }
-
-        .origin-content blockquote strong {
-            color: #fff;
-            font-style: normal;
-        }
-
-        /* ================================================
-       CTA — "Begin the Journey"
-       ================================================ */
-        .cta {
-            background: var(--bg);
-            padding: 8rem 2rem;
-        }
-
-        .cta-card {
-            max-width: 500px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 3rem;
-            background: var(--surface);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-        }
-
-        .cta-card h2 {
-            font-family: 'Newsreader', serif;
-            font-size: 1.75rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-install {
-            background: #1a1a2e;
-            color: #a5b4fc;
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            font-family: monospace;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            display: inline-block;
-        }
-
-        .cta-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        /* ================================================
-       FOOTER
-       ================================================ */
-        .footer {
-            padding: 3rem 2rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .footer-text {
-            color: var(--text-subtle);
-            font-size: 0.875rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text);
-        }
-
-        /* ================================================
-       UTILITIES
-       ================================================ */
-        .btn-primary {
-            padding: 0.875rem 2rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            background: var(--accent-light);
-        }
-
-        .btn-ghost {
-            padding: 0.875rem 2rem;
-            background: transparent;
-            color: var(--text);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--text-muted);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banda — DOM-First UI Framework for Programmers</title>
+  <meta name="description"
+    content="Banda is an elegant, DOM-first TypeScript UI framework. No Virtual DOM. No JSX. Pure control.">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Banda Styles -->
+  <link rel="stylesheet" href="/styles/base.css">
+  <link rel="stylesheet" href="/styles/cyber.css">
+  <link rel="stylesheet" href="/components/button/button.css">
+  <link rel="stylesheet" href="/components/card/card.css">
+  <link rel="stylesheet" href="/components/input/input.css">
+  <link rel="stylesheet" href="/components/badge/badge.css">
+  <link rel="stylesheet" href="/components/modal/modal.css">
+  <link rel="stylesheet" href="/components/layout/layout.css">
+  <link rel="stylesheet" href="/components/feedback/feedback.css">
+  <link rel="stylesheet" href="/components/tabs/tabs.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+      background: var(--banda-color-bg);
+      color: var(--banda-color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background: var(--banda-color-primary-200);
+      color: var(--banda-color-bg);
+    }
+
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--banda-shadow-focus);
+    }
+  </style>
 </head>
 
-<body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <a href="/" class="nav-logo">Banda</a>
-        <a href="https://github.com/zakirkun/banda" class="nav-link">GitHub</a>
-    </nav>
+<body class="landing">
+  <!-- Navigation -->
+  <nav class="landing-nav">
+    <a href="/" class="landing-nav__logo">Banda</a>
+    <div class="landing-nav__links">
+      <a href="#philosophy" class="landing-nav__link">Philosophy</a>
+      <a href="#components" class="landing-nav__link">Components</a>
+      <a href="/docs/getting-started.html" class="landing-nav__link">Docs</a>
+      <a href="https://github.com/zakirkun/banda" class="landing-nav__link">GitHub</a>
+    </div>
+  </nav>
 
-    <!-- Hero -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Banda</h1>
-            <p class="hero-subtitle">
-                A UI framework rooted in<br>
-                <em>simplicity, control, and elegance</em>
-            </p>
-            <div class="hero-actions">
-                <a href="/docs/getting-started.html" class="btn-primary">Get Started</a>
-                <a href="#components" class="btn-ghost">Explore Components</a>
-            </div>
-        </div>
-        <div class="scroll-hint">
-            <span>↓</span>
-        </div>
-    </section>
+  <!-- Hero Section -->
+  <section class="landing-section landing-section--centered hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__grid"></div>
+    <div class="hero__content">
+      <h1 class="hero__title">Banda</h1>
+      <p class="hero__subtitle">
+        An elegant, DOM-first UI framework for programmers
+      </p>
+      <code class="hero__tagline">npm install banda-ui</code>
+      <div class="hero__actions" id="hero-actions"></div>
+    </div>
+  </section>
 
-    <!-- Philosophy -->
-    <section class="philosophy" id="philosophy">
-        <div class="philosophy-content">
-            <p class="philosophy-text">
-                <span class="philosophy-line">Banda is inspired by the <strong>Banda Islands</strong> —</span><br>
-                <span class="philosophy-line">a small archipelago that once shaped the world.</span><br><br>
-                <span class="philosophy-line">It believes that</span><br>
-                <span class="philosophy-line"><strong>small, intentional primitives</strong></span><br>
-                <span class="philosophy-line"><strong>can shape great systems.</strong></span>
-            </p>
-        </div>
-    </section>
+  <!-- Philosophy Section -->
+  <section class="landing-section landing-section--centered philosophy" id="philosophy">
+    <div class="landing-container landing-container--narrow">
+      <p class="philosophy__text">
+        Inspired by the <strong>Banda Islands</strong> — where small things changed the world.<br><br>
+        We believe that <strong>small, intentional primitives</strong> can shape <strong>great systems</strong>.
+      </p>
+      <div class="philosophy__values" id="philosophy-values"></div>
+    </div>
+  </section>
 
-    <!-- Values -->
-    <section class="values" id="values">
-        <div class="values-grid">
-            <div class="value-pillar" tabindex="0">
-                <h3>Simplicity</h3>
-                <p>
-                    No Virtual DOM.<br>
-                    No JSX.<br>
-                    No illusion.
-                </p>
-            </div>
-            <div class="value-pillar" tabindex="0">
-                <h3>Control</h3>
-                <p>
-                    You own the DOM.<br>
-                    State flows explicitly.<br>
-                    Nothing happens behind your back.
-                </p>
-            </div>
-            <div class="value-pillar" tabindex="0">
-                <h3>Restraint</h3>
-                <p>
-                    Design tokens.<br>
-                    Predictable systems.<br>
-                    Balance over excess.
-                </p>
-            </div>
-        </div>
-    </section>
+  <!-- Features Section -->
+  <section class="landing-section features" id="features">
+    <div class="features__bg"></div>
+    <div class="landing-container">
+      <div class="showcase__header">
+        <h2>Core Capabilities</h2>
+        <p>Everything you need, nothing you don't.</p>
+      </div>
+      <div class="features__grid" id="features-grid"></div>
+    </div>
+  </section>
 
-    <!-- Engine -->
-    <section class="engine" id="engine">
-        <div class="engine-grid">
-            <div class="engine-text">
-                <h2>DOM-first by design</h2>
-                <p>
-                    Banda renders directly to the DOM.
-                    What you write is what runs.
-                </p>
-                <p>
-                    Fine-grained reactivity means only what changes, updates.
-                    No virtual diffing. No hidden complexity.
-                </p>
-            </div>
-            <div class="code-block">
-                <div class="code-header">
-                    <span class="code-dot r"></span>
-                    <span class="code-dot y"></span>
-                    <span class="code-dot g"></span>
-                </div>
-                <pre class="code-body"><span class="kw">const</span> count <span class="op">=</span> <span class="fn">createState</span>(<span class="st">0</span>);
+  <!-- Engine Section -->
+  <section class="landing-section" id="engine">
+    <div class="landing-container">
+      <div class="engine__grid">
+        <div class="engine__text">
+          <h2>DOM-First by Design</h2>
+          <p>
+            Banda renders directly to the DOM. No virtual layer between you and your UI. What you write is what runs.
+          </p>
+          <p>
+            Fine-grained reactivity means only what changes, updates. No diffing. No hidden complexity. Pure control.
+          </p>
+        </div>
+        <div class="code-block">
+          <div class="code-block__header">
+            <span class="code-block__dot code-block__dot--red"></span>
+            <span class="code-block__dot code-block__dot--yellow"></span>
+            <span class="code-block__dot code-block__dot--green"></span>
+          </div>
+          <pre class="code-block__body"><span class="kw">const</span> count <span class="op">=</span> <span class="fn">createState</span>(<span class="num">0</span>);
 
 <span class="fn">Card</span>({
-  title: <span class="st">"Fine-grained updates"</span>,
   children: [
-    <span class="fn">span</span>({ text: <span class="st">`Count: ${count.get()}`</span> }),
+    <span class="fn">span</span>({ text: <span class="st">`Count: </span><span class="op">${</span>count.<span class="fn">get</span>()<span class="op">}</span><span class="st">`</span> }),
     <span class="fn">Button</span>({
       label: <span class="st">"Increment"</span>,
-      onClick: () <span class="op">=></span> count.<span class="fn">set</span>(n <span class="op">=></span> n + <span class="st">1</span>)
+      onClick: () <span class="op">=></span> count.<span class="fn">set</span>(n <span class="op">=></span> n + <span class="num">1</span>)
     })
   ]
 });</pre>
-                <div class="code-hint">💡 Only the text node updates</div>
-            </div>
+          <div class="code-block__footer">↑ Only the text node updates — not the entire tree</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Components -->
-    <section class="components" id="components">
-        <div class="components-header">
-            <h2>Crafted, Not Assembled</h2>
-            <p>Each component is built from the same primitives you use.</p>
-        </div>
-        <div id="component-showcase"></div>
-    </section>
+  <!-- Performance Section -->
+  <section class="landing-section" id="performance">
+    <div class="landing-container landing-container--narrow centered">
+      <div id="performance-content"></div>
+    </div>
+  </section>
 
-    <!-- Theming -->
-    <section class="theming" id="theming">
-        <div class="theming-content">
-            <h2>Expression Without Chaos</h2>
-            <p>CSS variables as a first-class system. Light, dark, or custom — without rewriting components.</p>
-            <div id="theme-demo"></div>
-        </div>
-    </section>
+  <!-- Component Showcase -->
+  <section class="landing-section showcase" id="components">
+    <div class="landing-container">
+      <div class="showcase__header">
+        <h2>Crafted Components</h2>
+        <p>Built from the same primitives you use. No magic.</p>
+      </div>
+      <div id="component-showcase"></div>
+    </div>
+  </section>
 
-    <!-- Origin -->
-    <section class="origin" id="origin">
-        <div class="origin-content">
-            <h2>Why Banda Exists</h2>
-            <blockquote>
-                Banda remembers history.<br>
-                It respects consequences.<br>
-                It values responsibility.<br><br>
-                <strong>Built with humility.<br>
-                    Designed to last.</strong>
-            </blockquote>
-        </div>
-    </section>
+  <!-- Design Tokens Section -->
+  <section class="landing-section" id="tokens">
+    <div class="landing-container">
+      <div class="showcase__header">
+        <h2>Design as System</h2>
+        <p>CSS variables as first-class citizens. Theme without rebuilding.</p>
+      </div>
+      <div id="tokens-demo"></div>
+    </div>
+  </section>
 
-    <!-- CTA -->
-    <section class="cta" id="cta">
-        <div class="cta-card">
-            <h2>Begin the Journey</h2>
-            <code class="cta-install">npm install banda</code>
-            <div class="cta-actions">
-                <a href="/docs/getting-started.html" class="btn-primary">Get Started</a>
-                <a href="https://github.com/zakirkun/banda" class="btn-ghost">GitHub</a>
-            </div>
-        </div>
-    </section>
+  <!-- CTA Section -->
+  <section class="landing-section cta" id="cta">
+    <div class="cta__card">
+      <h2>Start Building</h2>
+      <code class="cta__install">npm install banda-ui</code>
+      <div class="cta__actions" id="cta-actions"></div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="/docs">Documentation</a>
-            <a href="https://github.com/zakirkun/banda">GitHub</a>
-            <a href="/docs/philosophy.html">Philosophy</a>
-        </div>
-        <p class="footer-text">
-            Banda — Inspired by the Banda Islands, Maluku, Indonesia 🇮🇩
-        </p>
-    </footer>
+  <!-- Footer -->
+  <footer class="landing-footer">
+    <div class="landing-footer__links">
+      <a href="/docs/getting-started.html">Documentation</a>
+      <a href="https://github.com/zakirkun/banda">GitHub</a>
+      <a href="/docs/philosophy.html">Philosophy</a>
+    </div>
+    <p class="landing-footer__text">
+      Banda — Inspired by the Banda Islands, Maluku, Indonesia 🇮🇩
+    </p>
+  </footer>
 
-    <script type="module" src="/demo/landing.ts"></script>
+  <script type="module" src="/demo/landing.ts"></script>
 </body>
 
 </html>

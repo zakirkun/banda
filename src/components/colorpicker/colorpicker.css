@@ -1,0 +1,190 @@
+/**
+ * Banda Color Picker Styles
+ */
+
+.banda-color-picker {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.banda-color-picker--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.banda-color-picker__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--banda-color-text-primary, #1e293b);
+}
+
+.banda-color-picker__wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+/* Preview Button */
+.banda-color-picker__preview {
+    border: 2px solid var(--banda-color-border, #e2e8f0);
+    border-radius: var(--banda-radius-md, 8px);
+    cursor: pointer;
+    transition: all var(--banda-transition-fast, 150ms) ease;
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.banda-color-picker__preview:hover {
+    border-color: var(--banda-color-border-hover, #cbd5e1);
+}
+
+.banda-color-picker__preview:focus {
+    outline: none;
+    border-color: var(--banda-color-primary, #3b82f6);
+    box-shadow: 0 0 0 3px var(--banda-color-primary-100, rgba(59, 130, 246, 0.2));
+}
+
+/* Size variants */
+.banda-color-picker__preview--sm {
+    width: 28px;
+    height: 28px;
+}
+
+.banda-color-picker__preview--md {
+    width: 36px;
+    height: 36px;
+}
+
+.banda-color-picker__preview--lg {
+    width: 48px;
+    height: 48px;
+}
+
+/* Dropdown */
+.banda-color-picker__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    z-index: 100;
+    min-width: 240px;
+    padding: 1rem;
+    background: var(--banda-color-bg, #fff);
+    border: 1px solid var(--banda-color-border, #e2e8f0);
+    border-radius: var(--banda-radius-lg, 12px);
+    box-shadow: var(--banda-shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.1));
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all var(--banda-transition-normal, 200ms) ease;
+}
+
+.banda-color-picker__dropdown--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Sections */
+.banda-color-picker__section {
+    margin-bottom: 1rem;
+}
+
+.banda-color-picker__section:last-child {
+    margin-bottom: 0;
+}
+
+.banda-color-picker__section-title {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--banda-color-text-tertiary, #94a3b8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Swatches */
+.banda-color-picker__swatches {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 6px;
+}
+
+.banda-color-picker__swatch {
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--banda-color-border, #e2e8f0);
+    border-radius: var(--banda-radius-sm, 4px);
+    cursor: pointer;
+    transition: transform var(--banda-transition-fast, 150ms) ease;
+}
+
+.banda-color-picker__swatch:hover {
+    transform: scale(1.15);
+    z-index: 1;
+}
+
+.banda-color-picker__swatch:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--banda-color-primary, #3b82f6);
+}
+
+/* Custom Input */
+.banda-color-picker__custom {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.banda-color-picker__native {
+    width: 40px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--banda-color-border, #e2e8f0);
+    border-radius: var(--banda-radius-sm, 4px);
+    cursor: pointer;
+}
+
+.banda-color-picker__native::-webkit-color-swatch-wrapper {
+    padding: 2px;
+}
+
+.banda-color-picker__native::-webkit-color-swatch {
+    border: none;
+    border-radius: 2px;
+}
+
+.banda-color-picker__hex-input {
+    flex: 1;
+    height: 32px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--banda-color-border, #e2e8f0);
+    border-radius: var(--banda-radius-sm, 4px);
+    font-family: var(--banda-font-mono, monospace);
+    font-size: 0.875rem;
+    color: var(--banda-color-text-primary, #1e293b);
+    background: var(--banda-color-bg, #fff);
+}
+
+.banda-color-picker__hex-input:focus {
+    outline: none;
+    border-color: var(--banda-color-primary, #3b82f6);
+}
+
+/* Dark Mode */
+[data-theme="cyber"] .banda-color-picker__dropdown,
+[data-theme="dark"] .banda-color-picker__dropdown {
+    background: var(--banda-color-surface, #1a1a28);
+    border-color: var(--banda-color-border, rgba(255, 255, 255, 0.06));
+}
+
+[data-theme="cyber"] .banda-color-picker__label,
+[data-theme="dark"] .banda-color-picker__label {
+    color: var(--banda-color-text-primary, #e4e4e7);
+}
+
+[data-theme="cyber"] .banda-color-picker__hex-input,
+[data-theme="dark"] .banda-color-picker__hex-input {
+    background: var(--banda-color-surface-elevated, #14141f);
+    color: var(--banda-color-text-primary, #e4e4e7);
+    border-color: var(--banda-color-border, rgba(255, 255, 255, 0.1));
+}

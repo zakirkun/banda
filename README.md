@@ -6,6 +6,7 @@
 
 *Inspired by the Banda Islands — where small things change the world.*
 
+[![npm version](https://img.shields.io/npm/v/banda-ui?style=for-the-badge&logo=npm&logoColor=white)](https://www.npmjs.com/package/banda-ui)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Bun](https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white)](https://bun.sh/)
 [![Zero Dependencies](https://img.shields.io/badge/Dependencies-Zero-green?style=for-the-badge)](.)
@@ -54,6 +55,24 @@
 ## 🚀 Getting Started
 
 ### Installation
+
+```bash
+# npm
+npm install banda-ui
+
+# yarn
+yarn add banda-ui
+
+# pnpm
+pnpm add banda-ui
+
+# bun
+bun add banda-ui
+```
+
+### Development Setup
+
+To contribute or run the demo locally:
 
 ```bash
 git clone https://github.com/zakirkun/banda.git
@@ -105,6 +124,9 @@ bun run build    # Production build
 | **Select** | Searchable dropdown with groups |
 | **DatePicker** | Calendar with date constraints |
 | **Textarea** | Multi-line input |
+| **FileUpload** | Drag-and-drop, previews, validation |
+| **RichTextEditor** | WYSIWYG editor with toolbar |
+| **ColorPicker** | Color selection with presets |
 
 ### Layout
 | Component | Description |
@@ -249,9 +271,11 @@ banda/
 - [x] Plugin system
 - [x] Date picker
 - [x] Data table
-- [ ] Rich text editor
-- [ ] Color picker
-- [ ] File upload
+- [x] Rich text editor
+- [x] Color picker
+- [ ] File upload improvements
+- [ ] Markdown editor
+- [x] File upload
 
 ---
 

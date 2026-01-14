@@ -1,0 +1,697 @@
+/**
+ * Banda Cyber Theme
+ * 
+ * Elegant, dark, programmer-focused design tokens.
+ */
+
+/* ============================================
+   CYBER THEME
+   ============================================ */
+
+[data-theme="cyber"],
+.theme-cyber {
+    /* Backgrounds */
+    --banda-color-bg: #0a0a0f;
+    --banda-color-bg-subtle: #0f0f16;
+    --banda-color-surface: #14141f;
+    --banda-color-surface-elevated: #1a1a28;
+
+    /* Primary - Electric Cyan */
+    --banda-color-primary: #00d4ff;
+    --banda-color-primary-50: rgba(0, 212, 255, 0.05);
+    --banda-color-primary-100: rgba(0, 212, 255, 0.1);
+    --banda-color-primary-200: rgba(0, 212, 255, 0.2);
+    --banda-color-primary-500: #00d4ff;
+    --banda-color-primary-600: #00b8e0;
+    --banda-color-primary-glow: 0 0 20px rgba(0, 212, 255, 0.3);
+
+    /* Secondary - Muted Violet */
+    --banda-color-secondary: #8b5cf6;
+    --banda-color-secondary-50: rgba(139, 92, 246, 0.05);
+    --banda-color-secondary-100: rgba(139, 92, 246, 0.1);
+
+    /* Success - Cyber Green */
+    --banda-color-success: #00ff88;
+    --banda-color-success-50: rgba(0, 255, 136, 0.05);
+    --banda-color-success-100: rgba(0, 255, 136, 0.1);
+
+    /* Text */
+    --banda-color-text-primary: #e4e4e7;
+    --banda-color-text-secondary: #a1a1aa;
+    --banda-color-text-tertiary: #71717a;
+    --banda-color-text-disabled: #52525b;
+
+    /* Borders */
+    --banda-color-border: rgba(255, 255, 255, 0.06);
+    --banda-color-border-hover: rgba(255, 255, 255, 0.12);
+    --banda-color-border-focus: rgba(0, 212, 255, 0.5);
+
+    /* Code */
+    --banda-color-code-bg: #0d0d14;
+    --banda-color-code-text: #00ff88;
+
+    /* Focus */
+    --banda-shadow-focus: 0 0 0 2px rgba(0, 212, 255, 0.3);
+
+    /* Glow Effects */
+    --cyber-glow-primary: 0 0 30px rgba(0, 212, 255, 0.15);
+    --cyber-glow-soft: 0 0 60px rgba(0, 212, 255, 0.08);
+    --cyber-border-glow: inset 0 0 20px rgba(0, 212, 255, 0.03);
+}
+
+/* ============================================
+   LANDING PAGE STYLES
+   ============================================ */
+
+.landing {
+    background: var(--banda-color-bg);
+    color: var(--banda-color-text-primary);
+    font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Navigation */
+.landing-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(180deg, var(--banda-color-bg) 0%, transparent 100%);
+}
+
+.landing-nav__logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--banda-color-primary);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.landing-nav__links {
+    display: flex;
+    gap: 2rem;
+}
+
+.landing-nav__link {
+    color: var(--banda-color-text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.landing-nav__link:hover {
+    color: var(--banda-color-primary);
+}
+
+/* Section Base */
+.landing-section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 2rem;
+    position: relative;
+}
+
+.landing-section--centered {
+    align-items: center;
+    text-align: center;
+}
+
+.landing-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.landing-container--narrow {
+    max-width: 720px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/assets/hero.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    mix-blend-mode: luminosity;
+}
+
+.hero__grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+    animation: gridPulse 10s ease-in-out infinite;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.btn-icon {
+    margin-right: 0.5rem;
+}
+
+@keyframes gridPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.8s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero__title {
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    background: linear-gradient(180deg, var(--banda-color-text-primary) 0%, var(--banda-color-text-tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--banda-color-text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+    max-width: 500px;
+}
+
+.hero__tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--banda-color-success);
+    margin-bottom: 3rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--banda-color-success-50);
+    border: 1px solid var(--banda-color-success-100);
+    border-radius: var(--banda-radius-md);
+    display: inline-block;
+}
+
+.hero__tagline::before {
+    content: '$ ';
+    color: var(--banda-color-text-tertiary);
+}
+
+.hero__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   PHILOSOPHY SECTION
+   ============================================ */
+
+.philosophy {
+    background: var(--banda-color-bg-subtle);
+}
+
+.philosophy__text {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    line-height: 2;
+    color: var(--banda-color-text-secondary);
+    font-weight: 400;
+}
+
+.philosophy__text strong {
+    color: var(--banda-color-primary);
+    font-weight: 500;
+}
+
+.philosophy__values {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .philosophy__values {
+        grid-template-columns: 1fr;
+    }
+}
+
+.philosophy__value {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    background: var(--banda-color-surface);
+    transition: all 0.3s ease;
+}
+
+.philosophy__value:hover {
+    border-color: var(--banda-color-border-hover);
+    box-shadow: var(--cyber-glow-soft);
+}
+
+.philosophy__value h3 {
+    color: var(--banda-color-primary);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.philosophy__value p {
+    color: var(--banda-color-text-tertiary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+/* ============================================
+   ENGINE SECTION
+   ============================================ */
+
+.engine__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .engine__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.engine__text h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 1.5rem;
+    color: var(--banda-color-text-primary);
+}
+
+.engine__text p {
+    color: var(--banda-color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+/* Code Block */
+.code-block {
+    background: var(--banda-color-code-bg);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+}
+
+.code-block__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+.code-block__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.code-block__dot--red {
+    background: #ff5f56;
+}
+
+.code-block__dot--yellow {
+    background: #ffbd2e;
+}
+
+.code-block__dot--green {
+    background: #27c93f;
+}
+
+.code-block__body {
+    padding: 1.5rem;
+    color: var(--banda-color-text-secondary);
+    line-height: 1.8;
+    overflow-x: auto;
+}
+
+.code-block__body .kw {
+    color: #c792ea;
+}
+
+.code-block__body .fn {
+    color: #82aaff;
+}
+
+.code-block__body .st {
+    color: #c3e88d;
+}
+
+.code-block__body .cm {
+    color: #546e7a;
+}
+
+.code-block__body .op {
+    color: #89ddff;
+}
+
+.code-block__body .num {
+    color: #f78c6c;
+}
+
+.code-block__footer {
+    padding: 1rem 1.5rem;
+    background: var(--banda-color-primary-50);
+    border-top: 1px solid var(--banda-color-border);
+    color: var(--banda-color-primary);
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+
+.features {
+    background: var(--banda-color-bg);
+    position: relative;
+    overflow: hidden;
+}
+
+.features__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/features.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center right;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.features__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.feature-card {
+    background: var(--banda-color-surface-elevated);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--banda-color-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--cyber-glow-soft);
+}
+
+.feature-card__icon {
+    color: var(--banda-color-primary);
+    margin-bottom: 1.5rem;
+    display: inline-flex;
+    padding: 0.75rem;
+    background: var(--banda-color-primary-50);
+    border-radius: var(--banda-radius-md);
+    border: 1px solid var(--banda-color-primary-100);
+}
+
+.feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--banda-color-text-primary);
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    color: var(--banda-color-text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   COMPONENT SHOWCASE
+   ============================================ */
+
+.showcase {
+    background: var(--banda-color-bg-subtle);
+}
+
+.showcase__header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.showcase__header h2 {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
+}
+
+.showcase__header p {
+    color: var(--banda-color-text-secondary);
+}
+
+.showcase__card {
+    background: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.showcase__card:hover {
+    border-color: var(--banda-color-border-hover);
+    box-shadow: var(--cyber-border-glow);
+}
+
+.showcase__card h3 {
+    color: var(--banda-color-primary);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--banda-color-border);
+}
+
+/* ============================================
+   DESIGN TOKENS SECTION
+   ============================================ */
+
+.tokens__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.token-card {
+    background: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-lg);
+    padding: 1.5rem;
+}
+
+.token-card__label {
+    font-size: 0.75rem;
+    color: var(--banda-color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.token-card__colors {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.color-swatch {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--banda-radius-sm);
+    border: 1px solid var(--banda-color-border);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta {
+    background: var(--banda-color-bg);
+}
+
+.cta__card {
+    background: var(--banda-color-surface);
+    border: 1px solid var(--banda-color-border);
+    border-radius: var(--banda-radius-xl);
+    padding: 4rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cta__card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta__install {
+    background: var(--banda-color-code-bg);
+    border: 1px solid var(--banda-color-border);
+    color: var(--banda-color-success);
+    padding: 1rem 2rem;
+    border-radius: var(--banda-radius-md);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.cta__install::before {
+    content: '$ ';
+    color: var(--banda-color-text-tertiary);
+}
+
+.cta__actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.landing-footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--banda-color-border);
+    text-align: center;
+}
+
+.landing-footer__links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.landing-footer__links a {
+    color: var(--banda-color-text-tertiary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
+
+.landing-footer__links a:hover {
+    color: var(--banda-color-primary);
+}
+
+.landing-footer__text {
+    color: var(--banda-color-text-tertiary);
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   CYBER BUTTON OVERRIDES
+   ============================================ */
+
+[data-theme="cyber"] .banda-btn--primary {
+    background: var(--banda-color-primary);
+    color: var(--banda-color-bg);
+    border: none;
+    font-weight: 600;
+}
+
+[data-theme="cyber"] .banda-btn--primary:hover {
+    box-shadow: var(--cyber-glow-primary);
+}
+
+[data-theme="cyber"] .banda-btn--secondary,
+[data-theme="cyber"] .banda-btn--ghost {
+    background: transparent;
+    color: var(--banda-color-text-secondary);
+    border: 1px solid var(--banda-color-border);
+}
+
+[data-theme="cyber"] .banda-btn--secondary:hover,
+[data-theme="cyber"] .banda-btn--ghost:hover {
+    border-color: var(--banda-color-primary);
+    color: var(--banda-color-primary);
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__grid {
+        animation: none;
+    }
+
+    .hero__content {
+        animation: none;
+    }
+
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}

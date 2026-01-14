@@ -131,3 +131,24 @@ export {
     type SortDirection,
     type PaginationOptions,
 } from './table/table';
+
+// FileUpload
+export {
+    FileUpload,
+    type FileUploadProps,
+    type FileUploadState,
+    type FileError,
+    type FileErrorType,
+} from './fileupload/FileUpload';
+
+// RichTextEditor
+export {
+    RichTextEditor,
+    type RichTextEditorProps,
+} from './richtext/richtext';
+
+// ColorPicker
+export {
+    ColorPicker,
+    type ColorPickerProps,
+} from './colorpicker/colorpicker';

@@ -1,10 +1,10 @@
 /**
- * Banda Landing Page
+ * Banda Landing Page — Cyber Elegant
  * 
- * An elegant experience built with Banda.
+ * Built with Banda itself.
  */
 
-import { div, span, p, h3 } from '../core/element';
+import { div, span, p, h3, h2 } from '../core/element';
 import { mount } from '../core/mount';
 import { createState } from '../core/state';
 import { Button } from '../components/button/button';
@@ -13,61 +13,186 @@ import { Input } from '../components/input/input';
 import { Badge } from '../components/badge/badge';
 import { openModal, closeModal } from '../components/modal/modal';
 import { Stack, Inline, Grid } from '../components/layout/layout';
-import { Alert, Spinner, toast, Tooltip } from '../components/feedback/feedback';
+import { Alert, toast, Tooltip } from '../components/feedback/feedback';
+import { icons } from './icons';
 
 // ============================================================================
-// SCROLL REVEAL ANIMATION
+// ICONS HELPER
 // ============================================================================
 
-function initScrollReveal() {
-    const lines = document.querySelectorAll('.philosophy-line');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, index * 150);
-            }
-        });
-    }, {
-        threshold: 0.5,
-        rootMargin: '-50px',
-    });
-
-    lines.forEach(line => observer.observe(line));
+function Icon(name: keyof typeof icons, className: string = 'icon'): HTMLElement {
+    const spanEl = span({ className });
+    spanEl.innerHTML = icons[name];
+    return spanEl;
 }
 
 // ============================================================================
-// COMPONENT SHOWCASE — "Crafted Moments"
+// HERO ACTIONS
+// ============================================================================
+
+function HeroActions(): HTMLElement {
+    return Inline({
+        space: 3,
+        justify: 'center',
+        children: [
+            Button({
+                label: 'Get Started',
+                variant: 'primary',
+                size: 'lg',
+                icon: Icon('zap', 'icon btn-icon'),
+                onClick: () => {
+                    window.location.href = '/docs/getting-started.html';
+                },
+            }),
+            Button({
+                label: 'View Components',
+                variant: 'ghost',
+                size: 'lg',
+                icon: Icon('layers', 'icon btn-icon'),
+                onClick: () => {
+                    document.getElementById('components')?.scrollIntoView({ behavior: 'smooth' });
+                },
+            }),
+        ],
+    });
+}
+
+// ============================================================================
+// PHILOSOPHY VALUES
+// ============================================================================
+
+function PhilosophyValues(): HTMLElement {
+    const values = [
+        {
+            title: 'Simplicity',
+            description: 'No Virtual DOM. No JSX. No illusion. What you write is what runs.',
+        },
+        {
+            title: 'Control',
+            description: 'You own the DOM. State flows explicitly. Nothing happens behind your back.',
+        },
+        {
+            title: 'Restraint',
+            description: 'Design tokens. Predictable systems. Balance over excess.',
+        },
+    ];
+
+    return div({
+        className: 'philosophy__values',
+        children: values.map(({ title, description }) =>
+            div({
+                className: 'philosophy__value',
+                attrs: { tabindex: '0' },
+                children: [
+                    h3({ text: title }),
+                    p({ text: description }),
+                ],
+            })
+        ),
+    });
+}
+
+// ============================================================================
+// FEATURES GRID
+// ============================================================================
+
+function FeaturesGrid(): HTMLElement {
+    const features = [
+        { icon: 'zap', title: 'Zero Dependencies', desc: 'No heavy runtime. No bloat. Just pure, efficient TypeScript code.' },
+        { icon: 'shield', title: 'Type Safe', desc: 'First-class TypeScript support with strict typing for all components.' },
+        { icon: 'code', title: 'Direct DOM', desc: 'Interact directly with HTMLElements. No abstraction leakage.' },
+        { icon: 'box', title: 'Tree Shakable', desc: 'Import only what you need. Dead code elimination by default.' },
+        { icon: 'feather', title: 'Lightweight', desc: 'Tiny footprint. Core is just a few KB. Fast logical execution.' },
+        { icon: 'check', title: 'Accessible', desc: 'Built-in ARIA support, keyboard navigation, and focus management.' },
+    ];
+
+    return div({
+        className: 'features__grid',
+        children: features.map(f => FeatureCard(f as any))
+    });
+}
+
+function FeatureCard({ icon, title, desc }: { icon: keyof typeof icons, title: string, desc: string }): HTMLElement {
+    return div({
+        className: 'feature-card',
+        children: [
+            div({
+                className: 'feature-card__icon',
+                children: [Icon(icon)]
+            }),
+            h3({ text: title }),
+            p({ text: desc })
+        ]
+    });
+}
+
+// ============================================================================
+// PERFORMANCE SECTION
+// ============================================================================
+
+function PerformanceSection(): HTMLElement {
+    return Stack({
+        space: 6,
+        align: 'center',
+        children: [
+            h2({ text: 'Engineered for Performance' }),
+            Grid({
+                cols: 3,
+                gap: 6,
+                children: [
+                    StatCard('0', 'Dependencies'),
+                    StatCard('100%', 'Control'),
+                    StatCard('<5kb', 'Core Size'),
+                ]
+            })
+        ]
+    });
+}
+
+function StatCard(value: string, label: string): HTMLElement {
+    return div({
+        className: 'text-center',
+        children: [
+            div({
+                text: value,
+                className: 'text-4xl font-bold font-mono mb-2',
+                style: { color: 'var(--banda-color-primary)' }
+            }),
+            div({
+                text: label,
+                className: 'text-sm text-gray-400 uppercase tracking-widest'
+            })
+        ]
+    });
+}
+
+// ============================================================================
+// COMPONENT SHOWCASE
 // ============================================================================
 
 function ComponentShowcase(): HTMLElement {
-    return Stack({
-        space: 8,
+    return Grid({
+        cols: 2,
+        gap: 6,
         children: [
-            // Button Moment
-            ComponentMoment({
-                title: 'Button',
-                demo: Stack({
+            // Buttons
+            ShowcaseCard({
+                title: 'Buttons',
+                content: Stack({
                     space: 4,
                     children: [
                         Inline({
                             space: 3,
-                            align: 'center',
                             children: [
-                                Button({ label: 'Primary', variant: 'primary' }),
+                                Button({ label: 'Primary', variant: 'primary', icon: Icon('zap') }),
                                 Button({ label: 'Secondary', variant: 'secondary' }),
                                 Button({ label: 'Ghost', variant: 'ghost' }),
-                                Button({ label: 'Outline', variant: 'outline' }),
                             ],
                         }),
                         Inline({
                             space: 3,
-                            align: 'center',
                             children: [
-                                Button({ label: 'Hover me', variant: 'primary' }),
-                                Button({ label: 'Loading...', variant: 'secondary', loading: true }),
+                                Button({ label: 'Loading...', variant: 'primary', loading: true }),
                                 Button({ label: 'Disabled', variant: 'secondary', disabled: true }),
                             ],
                         }),
@@ -75,76 +200,56 @@ function ComponentShowcase(): HTMLElement {
                 }),
             }),
 
-            // Card Moment
-            ComponentMoment({
-                title: 'Card',
-                demo: Grid({
-                    cols: 2,
-                    gap: 4,
-                    children: [
-                        Card({
-                            variant: 'default',
-                            children: [
-                                CardHeader({ title: 'Clean Structure', subtitle: 'Elevation matters' }),
-                                CardBody({
-                                    children: [
-                                        p({ text: 'Cards that breathe. Spacing rhythm that feels natural.' }),
-                                    ],
-                                }),
-                            ],
-                        }),
-                        Card({
-                            variant: 'elevated',
-                            children: [
-                                CardHeader({
-                                    title: 'With Action',
-                                    actions: [
-                                        Badge({ label: 'New', variant: 'primary', styleType: 'solid' }),
-                                    ],
-                                }),
-                                CardBody({
-                                    children: [
-                                        p({ text: 'Every shadow has purpose. Every border has meaning.' }),
-                                    ],
-                                }),
-                            ],
-                        }),
-                    ],
-                }),
-            }),
-
-            // Input Moment
-            ComponentMoment({
-                title: 'Input',
-                demo: Grid({
-                    cols: 2,
-                    gap: 4,
-                    children: [
-                        Input({
-                            label: 'Focus clarity',
-                            placeholder: 'Type something...',
-                        }),
-                        Input({
-                            label: 'With validation',
-                            state: 'error',
-                            value: 'Invalid',
-                            errorMessage: 'Subtle, not aggressive',
-                        }),
-                    ],
-                }),
-            }),
-
-            // Interactive Moment
-            ComponentMoment({
-                title: 'Interactions',
-                demo: Stack({
+            // Inputs
+            ShowcaseCard({
+                title: 'Inputs',
+                content: Stack({
                     space: 4,
                     children: [
-                        Alert({
-                            title: 'Feedback that respects',
-                            message: 'Alerts inform without demanding attention.',
-                            variant: 'info',
+                        Input({
+                            placeholder: 'Enter your email...',
+                            type: 'email',
                         }),
+                        Input({
+                            placeholder: 'With error',
+                            state: 'error',
+                            errorMessage: 'Invalid input',
+                        }),
+                    ],
+                }),
+            }),
+
+            // Cards
+            ShowcaseCard({
+                title: 'Cards',
+                content: Card({
+                    variant: 'elevated',
+                    children: [
+                        CardHeader({
+                            title: 'Nested Card',
+                            subtitle: 'Cards can contain anything',
+                        }),
+                        CardBody({
+                            children: [
+                                Inline({
+                                    space: 2,
+                                    children: [
+                                        Badge({ label: 'Active', variant: 'success', dot: true }),
+                                        Badge({ label: 'v0.1.0', variant: 'primary', styleType: 'outline' }),
+                                    ],
+                                }),
+                            ],
+                        }),
+                    ],
+                }),
+            }),
+
+            // Interactions
+            ShowcaseCard({
+                title: 'Interactions',
+                content: Stack({
+                    space: 4,
+                    children: [
                         Inline({
                             space: 3,
                             children: [
@@ -152,19 +257,19 @@ function ComponentShowcase(): HTMLElement {
                                     label: 'Toast',
                                     variant: 'secondary',
                                     onClick: () => toast({
-                                        message: 'Calm notification ✓',
-                                        variant: 'success'
+                                        message: 'Action completed ✓',
+                                        variant: 'success',
                                     }),
                                 }),
                                 Button({
                                     label: 'Modal',
                                     variant: 'secondary',
                                     onClick: () => openModal({
-                                        title: 'Focus Trap',
+                                        title: 'Modal Dialog',
                                         size: 'sm',
                                         centered: true,
                                         children: [
-                                            p({ text: 'Modal with proper focus management and escape key support.' }),
+                                            p({ text: 'Focus trap and ESC key support built-in.' }),
                                         ],
                                         footer: [
                                             Button({ label: 'Close', variant: 'primary', onClick: closeModal }),
@@ -172,7 +277,7 @@ function ComponentShowcase(): HTMLElement {
                                     }),
                                 }),
                                 Tooltip({
-                                    content: 'Helpful, not intrusive',
+                                    content: 'Helpful hint',
                                     position: 'top',
                                     children: Button({ label: 'Tooltip', variant: 'outline' }),
                                 }),
@@ -185,82 +290,73 @@ function ComponentShowcase(): HTMLElement {
     });
 }
 
-function ComponentMoment({ title, demo }: { title: string; demo: HTMLElement }): HTMLElement {
+function ShowcaseCard({ title, content }: { title: string; content: HTMLElement }): HTMLElement {
     return div({
-        className: 'component-moment',
+        className: 'showcase__card',
         children: [
             h3({ text: title }),
-            demo,
+            content,
         ],
     });
 }
 
 // ============================================================================
-// THEME DEMO
+// DESIGN TOKENS DEMO
 // ============================================================================
 
-function ThemeDemo(): HTMLElement {
-    const currentTheme = createState('light');
+function TokensDemo(): HTMLElement {
+    const colors = [
+        { name: 'Primary', color: 'var(--banda-color-primary)' },
+        { name: 'Success', color: 'var(--banda-color-success)' },
+        { name: 'Secondary', color: 'var(--banda-color-secondary)' },
+        { name: 'Surface', color: 'var(--banda-color-surface)' },
+    ];
 
-    const themes = ['light', 'dark', 'spice'];
-
-    const preview = Card({
-        children: [
-            CardHeader({ title: 'Theme Preview', subtitle: 'Live component' }),
-            CardBody({
+    return Grid({
+        cols: 4,
+        gap: 4,
+        children: colors.map(({ name, color }) =>
+            div({
+                className: 'token-card',
                 children: [
-                    Inline({
-                        space: 2,
-                        children: [
-                            Button({ label: 'Action', variant: 'primary' }),
-                            Badge({ label: 'Status', variant: 'success', dot: true }),
-                        ],
+                    div({
+                        className: 'color-swatch',
+                        style: { background: color, width: '100%', height: '60px', marginBottom: '1rem', borderRadius: '8px' },
+                    }),
+                    div({
+                        className: 'token-card__label',
+                        children: [span({ text: name })],
                     }),
                 ],
-            }),
-        ],
-    });
-
-    const buttons = Inline({
-        space: 2,
-        justify: 'center',
-        children: themes.map(theme =>
-            Button({
-                label: theme.charAt(0).toUpperCase() + theme.slice(1),
-                variant: currentTheme.get() === theme ? 'primary' : 'outline',
-                onClick: () => {
-                    currentTheme.set(theme);
-                    applyTheme(theme);
-                },
             })
         ),
     });
+}
 
-    function applyTheme(theme: string) {
-        if (theme === 'dark') {
-            document.documentElement.style.setProperty('--bg', '#0d0d0d');
-            document.documentElement.style.setProperty('--text', '#f5f5f5');
-            document.documentElement.style.setProperty('--surface', '#1a1a1a');
-        } else if (theme === 'spice') {
-            document.documentElement.style.setProperty('--bg', '#1a1510');
-            document.documentElement.style.setProperty('--text', '#f5f0e8');
-            document.documentElement.style.setProperty('--accent', '#c4a77d');
-            document.documentElement.style.setProperty('--surface', '#2a2015');
-        } else {
-            document.documentElement.style.setProperty('--bg', '#faf9f7');
-            document.documentElement.style.setProperty('--text', '#1a1a1a');
-            document.documentElement.style.setProperty('--accent', '#2c5545');
-            document.documentElement.style.setProperty('--surface', '#ffffff');
-        }
-    }
+// ============================================================================
+// CTA ACTIONS
+// ============================================================================
 
-    return Stack({
-        space: 6,
+function CTAActions(): HTMLElement {
+    return Inline({
+        space: 3,
+        justify: 'center',
         children: [
-            buttons,
-            div({
-                className: 'theme-preview',
-                children: [preview],
+            Button({
+                label: 'Read Documentation',
+                variant: 'primary',
+                icon: Icon('book', 'icon btn-icon'),
+                onClick: () => {
+                    window.location.href = '/docs/getting-started.html';
+                },
+            }),
+            Button({
+                label: 'View on GitHub',
+                variant: 'ghost',
+                icon: Icon('github', 'icon btn-icon'),
+                onClick: () => {
+                    window.open('https://github.com/zakirkun/banda', '_blank');
+                },
             }),
         ],
     });
@@ -271,18 +367,18 @@ function ThemeDemo(): HTMLElement {
 // ============================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Scroll reveal
-    initScrollReveal();
+    const mounts = [
+        { id: 'hero-actions', component: HeroActions },
+        { id: 'philosophy-values', component: PhilosophyValues },
+        { id: 'features-grid', component: FeaturesGrid },
+        { id: 'performance-content', component: PerformanceSection },
+        { id: 'component-showcase', component: ComponentShowcase },
+        { id: 'tokens-demo', component: TokensDemo },
+        { id: 'cta-actions', component: CTAActions },
+    ];
 
-    // Component showcase
-    const showcaseContainer = document.getElementById('component-showcase');
-    if (showcaseContainer) {
-        mount(ComponentShowcase(), showcaseContainer);
-    }
-
-    // Theme demo
-    const themeContainer = document.getElementById('theme-demo');
-    if (themeContainer) {
-        mount(ThemeDemo(), themeContainer);
-    }
+    mounts.forEach(({ id, component }) => {
+        const el = document.getElementById(id);
+        if (el) mount(component(), el);
+    });
 });

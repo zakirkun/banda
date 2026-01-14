@@ -19,6 +19,8 @@ export interface ButtonProps extends ElementEvents {
     label?: string;
     /** Button variant style */
     variant?: ButtonVariant;
+    /** Optional icon element */
+    icon?: HTMLElement;
     /** Button size */
     size?: ButtonSize;
     /** Whether the button is disabled */
@@ -67,6 +69,7 @@ export function Button(props: ButtonProps = {}): HTMLButtonElement {
         iconOnly = false,
         type = 'button',
         ariaLabel,
+        icon,
         children = [],
         className = '',
         onClick,
@@ -93,6 +96,11 @@ export function Button(props: ButtonProps = {}): HTMLButtonElement {
 
     // Build children array
     const content: (HTMLElement | string)[] = [...children];
+
+    if (icon) {
+        content.unshift(icon);
+    }
+
     if (label && !iconOnly) {
         content.push(label);
     }
